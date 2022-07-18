@@ -1,15 +1,11 @@
+import { AppTheme } from "../appTheme";
 import { DarkThemeSchemaColors } from "./darkThemeSchemaColors";
 
-import { createTheme } from "@mui/material/styles";
-
-export const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: {
-      main: DarkThemeSchemaColors.PRIMARY,
-    },
-    secondary: {
-      main: DarkThemeSchemaColors.SECONDARY,
-    },
+export const darkTheme: AppTheme = {
+  colors: {
+    white: DarkThemeSchemaColors.WHITE,
+    black: DarkThemeSchemaColors.BLACK,
+    primaryTextColor: DarkThemeSchemaColors.PRIMARY_TEXT_COLOR,
+    secondaryTextColor: DarkThemeSchemaColors.SECONDARY_TEXT_COLOR,
   },
-});
+};

@@ -1,14 +1,11 @@
 import { LightThemeSchemaColors } from "./lightThemeSchemaColors";
-import { createTheme } from "@mui/material/styles";
+import { AppTheme } from "../appTheme";
 
-export const lightTheme = createTheme({
-  palette: {
-    mode: "light",
-    primary: {
-      main: LightThemeSchemaColors.PRIMARY,
-    },
-    secondary: {
-      main: LightThemeSchemaColors.SECONDARY,
-    },
+export const lightTheme: AppTheme = {
+  colors: {
+    white: LightThemeSchemaColors.WHITE,
+    black: LightThemeSchemaColors.BLACK,
+    primaryTextColor: LightThemeSchemaColors.PRIMARY_TEXT_COLOR,
+    secondaryTextColor: LightThemeSchemaColors.SECONDARY_TEXT_COLOR,
   },
-});
+};
