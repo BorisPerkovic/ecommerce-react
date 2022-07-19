@@ -7,5 +7,8 @@ export const lightTheme: AppTheme = {
     black: LightThemeSchemaColors.BLACK,
     primaryTextColor: LightThemeSchemaColors.PRIMARY_TEXT_COLOR,
     secondaryTextColor: LightThemeSchemaColors.SECONDARY_TEXT_COLOR,
+    topNavBarBackGroundColor: LightThemeSchemaColors.TOP_NAV_BAR_BACKGROUND,
+    topNavBArTextColor: LightThemeSchemaColors.TOP_NAV_BAR_TEXT,
+    topNavBarSelectMenuButtonColor: LightThemeSchemaColors.TOP_NAV_BAR_TEXT,
   },
 };

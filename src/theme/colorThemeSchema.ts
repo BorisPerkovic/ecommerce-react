@@ -3,4 +3,7 @@ export interface ColorTheme {
   black: string;
   primaryTextColor: string;
   secondaryTextColor: string;
+  topNavBarBackGroundColor: string;
+  topNavBArTextColor: string;
+  topNavBarSelectMenuButtonColor: string;
 }

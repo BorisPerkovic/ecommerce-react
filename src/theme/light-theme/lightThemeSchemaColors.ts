@@ -6,4 +6,7 @@ export enum LightThemeSchemaColors {
 
   PRIMARY_TEXT_COLOR = "#004666",
   SECONDARY_TEXT_COLOR = "#000000",
+
+  TOP_NAV_BAR_BACKGROUND = "#0F3460",
+  TOP_NAV_BAR_TEXT = "#FFFFFF",
 }
