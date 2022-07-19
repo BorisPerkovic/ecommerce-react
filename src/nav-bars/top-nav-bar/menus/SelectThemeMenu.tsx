@@ -1,29 +1,17 @@
 import React, { Fragment, useState } from "react";
 import { Menu, MenuItem, Button } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeTheme } from "../../../theme/themeSlice";
-import { makeStyles } from "@mui/styles";
 import { useAppTheme } from "../../../theme/theme";
-import { RootState } from "../../../store";
-
-const useStyles = makeStyles({
-  btn: {
-    textTransform: "lowercase",
-    fontFamily: "Montserrat, sans-serif",
-    fontSize: "12px",
-  },
-});
 
 export const SelectThemeMenu = () => {
   const {
-    colors: { topNavBarSelectMenuButtonColor },
+    colors: { topNavBarSelectMenuButtonColor, topNavDropdownTextColor },
   } = useAppTheme();
   const [anchorElement, setAnchorElement] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorElement);
-  const theme = useSelector((state: RootState) => state.theme.appTheme);
   const dispatch = useDispatch();
-  const classes = useStyles();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorElement(event.currentTarget);
@@ -37,8 +25,13 @@ export const SelectThemeMenu = () => {
   return (
     <Fragment>
       <Button
-        className={classes.btn}
-        sx={{ color: topNavBarSelectMenuButtonColor }}
+        sx={{
+          color: topNavBarSelectMenuButtonColor,
+          textTransform: "lowercase",
+          fontFamily: "Montserrat, sans-serif",
+          fontSize: "12px",
+          marginLeft: "15px",
+        }}
         aria-controls={open ? "theme-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
@@ -47,7 +40,7 @@ export const SelectThemeMenu = () => {
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        {theme}
+        theme
       </Button>
       <Menu
         open={open}
@@ -58,8 +51,28 @@ export const SelectThemeMenu = () => {
         }}
         onClose={handleOnClose}
       >
-        <MenuItem onClick={() => handleOnClose("light")}>Light Mode</MenuItem>
-        <MenuItem onClick={() => handleOnClose("dark")}>Dark mode</MenuItem>
+        <MenuItem
+          sx={{
+            color: topNavDropdownTextColor,
+            textTransform: "lowercase",
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: "13px",
+          }}
+          onClick={() => handleOnClose("light")}
+        >
+          Light Mode
+        </MenuItem>
+        <MenuItem
+          sx={{
+            color: topNavDropdownTextColor,
+            textTransform: "lowercase",
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: "13px",
+          }}
+          onClick={() => handleOnClose("dark")}
+        >
+          Dark mode
+        </MenuItem>
       </Menu>
     </Fragment>
   );

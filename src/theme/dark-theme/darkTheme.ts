@@ -10,5 +10,6 @@ export const darkTheme: AppTheme = {
     topNavBarBackGroundColor: DarkThemeSchemaColors.TOP_NAV_BAR_BACKGROUND,
     topNavBArTextColor: DarkThemeSchemaColors.TOP_NAV_BAR_TEXT,
     topNavBarSelectMenuButtonColor: DarkThemeSchemaColors.TOP_NAV_BAR_TEXT,
+    topNavDropdownTextColor: DarkThemeSchemaColors.TOP_NAV_DROPDOWN_TEXT_COLOR,
   },
 };

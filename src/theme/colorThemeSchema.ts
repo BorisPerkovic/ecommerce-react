@@ -6,4 +6,5 @@ export interface ColorTheme {
   topNavBarBackGroundColor: string;
   topNavBArTextColor: string;
   topNavBarSelectMenuButtonColor: string;
+  topNavDropdownTextColor: string;
 }

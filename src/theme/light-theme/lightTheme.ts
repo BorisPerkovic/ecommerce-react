@@ -10,5 +10,6 @@ export const lightTheme: AppTheme = {
     topNavBarBackGroundColor: LightThemeSchemaColors.TOP_NAV_BAR_BACKGROUND,
     topNavBArTextColor: LightThemeSchemaColors.TOP_NAV_BAR_TEXT,
     topNavBarSelectMenuButtonColor: LightThemeSchemaColors.TOP_NAV_BAR_TEXT,
+    topNavDropdownTextColor: LightThemeSchemaColors.TOP_NAV_DROPDOWN_TEXT_COLOR,
   },
 };

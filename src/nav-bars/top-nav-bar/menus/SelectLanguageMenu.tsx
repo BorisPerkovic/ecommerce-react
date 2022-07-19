@@ -3,26 +3,15 @@ import { Menu, MenuItem, Button } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useDispatch } from "react-redux";
 import { changeTheme } from "../../../theme/themeSlice";
-import { makeStyles } from "@mui/styles";
 import { useAppTheme } from "../../../theme/theme";
-
-const useStyles = makeStyles({
-  btn: {
-    textTransform: "lowercase",
-    fontFamily: "Montserrat, sans-serif",
-    fontSize: "12px",
-    marginLeft: "15px",
-  },
-});
 
 export const SelectLanguageMenu = () => {
   const {
-    colors: { topNavBarSelectMenuButtonColor },
+    colors: { topNavBarSelectMenuButtonColor, topNavDropdownTextColor },
   } = useAppTheme();
   const [anchorElement, setAnchorElement] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorElement);
   const dispatch = useDispatch();
-  const classes = useStyles();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorElement(event.currentTarget);
@@ -36,8 +25,13 @@ export const SelectLanguageMenu = () => {
   return (
     <Fragment>
       <Button
-        className={classes.btn}
-        sx={{ color: topNavBarSelectMenuButtonColor }}
+        sx={{
+          color: topNavBarSelectMenuButtonColor,
+          textTransform: "lowercase",
+          fontFamily: "Montserrat, sans-serif",
+          fontSize: "12px",
+          marginLeft: "15px",
+        }}
         aria-controls={open ? "language-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
@@ -57,10 +51,50 @@ export const SelectLanguageMenu = () => {
         }}
         onClose={handleOnClose}
       >
-        <MenuItem onClick={() => handleOnClose("light")}>English</MenuItem>
-        <MenuItem onClick={() => handleOnClose("dark")}>Germany</MenuItem>
-        <MenuItem onClick={() => handleOnClose("dark")}>Italy</MenuItem>
-        <MenuItem onClick={() => handleOnClose("dark")}>Spanish</MenuItem>
+        <MenuItem
+          sx={{
+            color: topNavDropdownTextColor,
+            textTransform: "lowercase",
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: "13px",
+          }}
+          onClick={() => handleOnClose("light")}
+        >
+          English
+        </MenuItem>
+        <MenuItem
+          sx={{
+            color: topNavDropdownTextColor,
+            textTransform: "lowercase",
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: "13px",
+          }}
+          onClick={() => handleOnClose("dark")}
+        >
+          Germany
+        </MenuItem>
+        <MenuItem
+          sx={{
+            color: topNavDropdownTextColor,
+            textTransform: "lowercase",
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: "13px",
+          }}
+          onClick={() => handleOnClose("dark")}
+        >
+          Italy
+        </MenuItem>
+        <MenuItem
+          sx={{
+            color: topNavDropdownTextColor,
+            textTransform: "lowercase",
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: "13px",
+          }}
+          onClick={() => handleOnClose("dark")}
+        >
+          Spanish
+        </MenuItem>
       </Menu>
     </Fragment>
   );

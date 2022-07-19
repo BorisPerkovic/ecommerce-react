@@ -8,4 +8,5 @@ export enum DarkThemeSchemaColors {
 
   TOP_NAV_BAR_BACKGROUND = "#0e1117",
   TOP_NAV_BAR_TEXT = "#b5b5b5",
+  TOP_NAV_DROPDOWN_TEXT_COLOR = "#0e1117",
 }
