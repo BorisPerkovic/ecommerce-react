@@ -1,25 +1,27 @@
 import React, { Fragment, useState } from "react";
-import { Menu, MenuItem, Button } from "@mui/material";
+import { Menu, Button } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useDispatch } from "react-redux";
 import { changeTheme } from "../../../theme/themeSlice";
 import { useAppTheme } from "../../../theme/theme";
+import { useTranslation } from "react-i18next";
+import { SelectMenuItem } from "./SelectMenuItem";
 
 export const SelectThemeMenu = () => {
   const {
-    colors: { topNavBarSelectMenuButtonColor, topNavDropdownTextColor },
+    colors: { topNavBarSelectMenuButtonColor },
   } = useAppTheme();
   const [anchorElement, setAnchorElement] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorElement);
   const dispatch = useDispatch();
+  const { t } = useTranslation("navigation");
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorElement(event.currentTarget);
   };
 
-  const handleOnClose = (mode: string) => {
+  const handleOnClose = () => {
     setAnchorElement(null);
-    dispatch(changeTheme(mode));
   };
 
   return (
@@ -40,7 +42,7 @@ export const SelectThemeMenu = () => {
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        theme
+        {t("theme")}
       </Button>
       <Menu
         open={open}
@@ -51,28 +53,20 @@ export const SelectThemeMenu = () => {
         }}
         onClose={handleOnClose}
       >
-        <MenuItem
-          sx={{
-            color: topNavDropdownTextColor,
-            textTransform: "lowercase",
-            fontFamily: "Montserrat, sans-serif",
-            fontSize: "13px",
+        <SelectMenuItem
+          label="lightTheme"
+          onClose={() => {
+            handleOnClose();
+            dispatch(changeTheme("light"));
           }}
-          onClick={() => handleOnClose("light")}
-        >
-          Light Mode
-        </MenuItem>
-        <MenuItem
-          sx={{
-            color: topNavDropdownTextColor,
-            textTransform: "lowercase",
-            fontFamily: "Montserrat, sans-serif",
-            fontSize: "13px",
+        />
+        <SelectMenuItem
+          label="darkTheme"
+          onClose={() => {
+            handleOnClose();
+            dispatch(changeTheme("dark"));
           }}
-          onClick={() => handleOnClose("dark")}
-        >
-          Dark mode
-        </MenuItem>
+        />
       </Menu>
     </Fragment>
   );

@@ -14,7 +14,6 @@ const themeSlice = createSlice({
   reducers: {
     changeTheme: (state, { payload }) => {
       state.appTheme = payload;
-      localStorage.setItem("EcommerceTheme", JSON.stringify(state.appTheme));
     },
   },
 });

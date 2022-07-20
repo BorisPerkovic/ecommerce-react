@@ -6,9 +6,11 @@ import {
 import { persistStore, persistReducer } from "redux-persist";
 import localStorage from "redux-persist/es/storage";
 import themeReducer from "./theme/themeSlice";
+import languageReducer from "./nav-bars/top-nav-bar/menus/changeLanguageSlice";
 
 const rootReducer = combineReducers({
   theme: themeReducer,
+  language: languageReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -16,7 +18,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 const persistConfig = {
   key: "root",
   storage: localStorage,
-  whitelist: ["EcommerceTheme"],
+  whitelist: ["theme", "language"],
 };
 
 const middleware = [
