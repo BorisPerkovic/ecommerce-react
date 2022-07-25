@@ -1,15 +1,21 @@
-import { LightThemeSchemaColors } from "./lightThemeSchemaColors";
-import { AppTheme } from "../appTheme";
+import { LightThemePaletteColors } from "./lightThemePaletteColors";
+import { createTheme, Theme } from "@mui/material";
 
-export const lightTheme: AppTheme = {
-  colors: {
-    white: LightThemeSchemaColors.WHITE,
-    black: LightThemeSchemaColors.BLACK,
-    primaryTextColor: LightThemeSchemaColors.PRIMARY_TEXT_COLOR,
-    secondaryTextColor: LightThemeSchemaColors.SECONDARY_TEXT_COLOR,
-    topNavBarBackGroundColor: LightThemeSchemaColors.TOP_NAV_BAR_BACKGROUND,
-    topNavBArTextColor: LightThemeSchemaColors.TOP_NAV_BAR_TEXT,
-    topNavBarSelectMenuButtonColor: LightThemeSchemaColors.TOP_NAV_BAR_TEXT,
-    topNavDropdownTextColor: LightThemeSchemaColors.TOP_NAV_DROPDOWN_TEXT_COLOR,
+export const lightTheme: Theme = createTheme({
+  palette: {
+    mode: "light",
+    common: {
+      white: LightThemePaletteColors.WHITE,
+      black: LightThemePaletteColors.BLACK,
+    },
+    primary: {
+      light: LightThemePaletteColors.WHITE,
+      main: LightThemePaletteColors.PRIMARY,
+      dark: LightThemePaletteColors.PRIMARY_DARK,
+    },
+    background: {
+      paper: LightThemePaletteColors.PAPER_BACKGROUND,
+      default: LightThemePaletteColors.BACKGROUND,
+    },
   },
-};
+});

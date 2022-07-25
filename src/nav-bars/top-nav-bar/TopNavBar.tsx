@@ -1,30 +1,29 @@
 import { Box, Container } from "@mui/material";
-import { useAppTheme } from "../../theme/theme";
+import { makeStyles } from "@mui/styles";
 import { TopNavBarInfo } from "./TopNavBarInfo";
 import { TopNavMenus } from "./TopNavMenus";
 
+const useStyles = makeStyles(() => ({
+  container: {
+    height: 40,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  wrapper: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+}));
+
 export const TopNavBar = () => {
-  const {
-    colors: { topNavBarBackGroundColor },
-  } = useAppTheme();
+  const classes = useStyles();
   return (
-    <Box
-      sx={{
-        backgroundColor: topNavBarBackGroundColor,
-        height: 40,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <Box bgcolor={"primary.dark"}>
       <Container component={"section"} maxWidth="lg">
-        <Box
-          component={"article"}
-          display="flex"
-          justifyContent={"space-between"}
-          flexDirection={"row"}
-          alignItems={"center"}
-        >
+        <Box className={classes.wrapper} component={"article"}>
           <TopNavBarInfo />
           <TopNavMenus />
         </Box>

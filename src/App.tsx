@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import "./App.css";
 import { TopNavBar } from "./nav-bars/top-nav-bar/TopNavBar";
 import { RootState } from "./store";
-import { ThemeContext } from "./theme/theme";
-import { useTheme } from "./theme/useTheme";
 import i18n from "i18next";
 import { useSelector } from "react-redux";
+import { ThemeProvider } from "@mui/styles";
+import { useAppTheme } from "./theme/useAppTheme";
 
 const App = () => {
-  const { appTheme } = useTheme();
+  const theme = useAppTheme();
   const language = useSelector(
     (state: RootState) => state.language.applanguage
   );
@@ -18,9 +18,9 @@ const App = () => {
   }, [language]);
 
   return (
-    <ThemeContext.Provider value={appTheme}>
+    <ThemeProvider theme={theme}>
       <TopNavBar />
-    </ThemeContext.Provider>
+    </ThemeProvider>
   );
 };
 

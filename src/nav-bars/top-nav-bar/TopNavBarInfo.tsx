@@ -1,48 +1,38 @@
 import { ECText } from "../../components/ECText";
-import { useAppTheme } from "../../theme/theme";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
-import { Box } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-
-const useStyles = makeStyles({
-  icons: {
-    marginRight: "10px",
-  },
-});
+import { Grid, useTheme } from "@mui/material";
 
 export const TopNavBarInfo = () => {
-  const {
-    colors: { topNavBArTextColor },
-  } = useAppTheme();
-  const classes = useStyles();
+  const { palette, spacing } = useTheme();
+
   return (
-    <Box display="flex" flexDirection="row">
-      <Box display="flex" flexDirection="row">
+    <Grid>
+      <Grid container component={"article"}>
         <LocalPhoneOutlinedIcon
+          htmlColor={palette.primary.light}
           fontSize="small"
-          htmlColor={topNavBArTextColor}
-          className={classes.icons}
         />
         <ECText
           textAlign="left"
-          component="p"
-          textColor={topNavBArTextColor}
-          margin="0 20px 0 0"
+          variant={"body1"}
+          component={"p"}
+          textColor={palette.primary.light}
+          space={spacing(0, 1.2)}
         >
           +381695382477
         </ECText>
-      </Box>
-      <Box display="flex" flexDirection="row">
-        <MailOutlinedIcon
-          fontSize="small"
-          htmlColor={topNavBArTextColor}
-          className={classes.icons}
-        />
-        <ECText textAlign="left" component="p" textColor={topNavBArTextColor}>
+        <MailOutlinedIcon htmlColor={palette.primary.light} fontSize="small" />
+        <ECText
+          variant={"body1"}
+          component={"p"}
+          textAlign="left"
+          textColor={palette.primary.light}
+          space={spacing(0, 1.2)}
+        >
           borisperkovic89@yahoo.com
         </ECText>
-      </Box>
-    </Box>
+      </Grid>
+    </Grid>
   );
 };

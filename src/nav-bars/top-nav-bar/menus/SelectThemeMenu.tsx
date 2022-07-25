@@ -1,50 +1,41 @@
 import React, { Fragment, useState } from "react";
-import { Menu, Button } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useDispatch } from "react-redux";
 import { changeTheme } from "../../../theme/themeSlice";
-import { useAppTheme } from "../../../theme/theme";
 import { useTranslation } from "react-i18next";
-import { SelectMenuItem } from "./SelectMenuItem";
+import { ECMenuItem } from "../../../components/ECMenuItem";
+import { ECMenu } from "../../../components/ECMenu";
+import { ECMenuButton } from "../../../components/ECMenuButton";
+import { useAppTheme } from "../../../theme/useAppTheme";
 
 export const SelectThemeMenu = () => {
-  const {
-    colors: { topNavBarSelectMenuButtonColor },
-  } = useAppTheme();
   const [anchorElement, setAnchorElement] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorElement);
   const dispatch = useDispatch();
   const { t } = useTranslation("navigation");
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorElement(event.currentTarget);
-  };
-
   const handleOnClose = () => {
     setAnchorElement(null);
   };
+  const { palette } = useAppTheme();
 
   return (
     <Fragment>
-      <Button
-        sx={{
-          color: topNavBarSelectMenuButtonColor,
-          textTransform: "lowercase",
-          fontFamily: "Montserrat, sans-serif",
-          fontSize: "12px",
-          marginLeft: "15px",
-        }}
+      <ECMenuButton
+        fontSize={12}
+        variant="text"
         aria-controls={open ? "theme-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        color="inherit"
         id="theme-button"
-        onClick={handleClick}
+        onAction={(event) => {
+          setAnchorElement(event?.currentTarget);
+        }}
         endIcon={<KeyboardArrowDownIcon />}
-      >
-        {t("theme")}
-      </Button>
-      <Menu
+        labelColor={palette.primary.light}
+        label={t("theme")}
+      />
+      <ECMenu
         open={open}
         id="theme-menu"
         anchorEl={anchorElement}
@@ -53,21 +44,25 @@ export const SelectThemeMenu = () => {
         }}
         onClose={handleOnClose}
       >
-        <SelectMenuItem
+        <ECMenuItem
           label="lightTheme"
-          onClose={() => {
+          onClose={async () => {
             handleOnClose();
-            dispatch(changeTheme("light"));
+            setTimeout(() => {
+              dispatch(changeTheme("light"));
+            }, 100);
           }}
         />
-        <SelectMenuItem
+        <ECMenuItem
           label="darkTheme"
           onClose={() => {
             handleOnClose();
-            dispatch(changeTheme("dark"));
+            setTimeout(() => {
+              dispatch(changeTheme("dark"));
+            }, 100);
           }}
         />
-      </Menu>
+      </ECMenu>
     </Fragment>
   );
 };
