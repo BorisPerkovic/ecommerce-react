@@ -16,7 +16,7 @@ export const SearchBar = () => {
         }}
         position="sticky"
       >
-        <Container>
+        <Container maxWidth="xl">
           <Grid container alignItems={"center"}>
             <Grid item xs={3}>
               <SearchBarLogo />

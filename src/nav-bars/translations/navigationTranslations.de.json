@@ -5,5 +5,9 @@
   "spain": "Spanien",
   "theme": "Thema",
   "lightTheme": "Licht",
-  "darkTheme": "Dunkel"
+  "darkTheme": "Dunkel",
+  "searchFor": "Suchen Nach...",
+  "shopAndService": "Shop Und Service",
+  "modernEcommerce": "Modernes Ecommerce",
+  "bannerDecription": "Moderne E-Commerce-Anwendung, die als Übung beim Erlernen von Front-End-Technologien wie React, Javascript, Redux, MUI usw. erstellt wurde. Viel Spaß mit der App und viel Spaß bei diesem Einkaufsabenteuer."
 }

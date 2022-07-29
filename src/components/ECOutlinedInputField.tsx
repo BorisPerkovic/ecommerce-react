@@ -27,6 +27,7 @@ export const ECOutlinedInputField: FunctionComponent<
             height: "48px",
             borderRadius: "30px",
             color: palette.secondary.light,
+            fontFamily: "Montserrat, sans-serif",
             "& > fieldset": {
               borderColor: palette.secondary.main,
             },

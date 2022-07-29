@@ -20,6 +20,9 @@ export const lightTheme: Theme = createTheme({
     error: {
       main: LightThemePaletteColors.ERROR,
     },
+    grey: {
+      "200": LightThemePaletteColors.GRAY_200,
+    },
     background: {
       paper: LightThemePaletteColors.PAPER_BACKGROUND,
       default: LightThemePaletteColors.BACKGROUND,

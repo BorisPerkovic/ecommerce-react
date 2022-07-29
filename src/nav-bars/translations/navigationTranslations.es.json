@@ -5,5 +5,9 @@
   "english": "Inglesa",
   "german": "Alemana",
   "italy": "Italia",
-  "spain": "España"
+  "spain": "España",
+  "searchFor": "Buscar...",
+  "shopAndService": "Tienda y Servicio",
+  "modernEcommerce": "Comercio Electrónico",
+  "bannerDecription": "Aplicación de comercio electrónico moderna que se creó como un ejercicio mientras aprendía tecnologías front-end como React, Javascript, Redux, MUI, etc. Disfruta de la aplicación y diviértete en esta aventura de compras."
 }

@@ -12,6 +12,8 @@ export enum DarkThemePaletteColors {
 
   ERROR = "#EB0D3F",
 
+  GRAY_200 = "#171717",
+
   BACKGROUND = "#0e1117",
   PAPER_BACKGROUND = "#292929",
 }

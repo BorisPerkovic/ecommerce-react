@@ -20,6 +20,9 @@ export const darkTheme: Theme = createTheme({
     error: {
       main: DarkThemePaletteColors.ERROR,
     },
+    grey: {
+      "200": DarkThemePaletteColors.GRAY_200,
+    },
     background: {
       paper: DarkThemePaletteColors.PAPER_BACKGROUND,
       default: DarkThemePaletteColors.BACKGROUND,

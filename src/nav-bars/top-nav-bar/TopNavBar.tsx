@@ -22,7 +22,7 @@ export const TopNavBar = () => {
   const classes = useStyles();
   return (
     <Box bgcolor={"primary.dark"}>
-      <Container component={"section"} maxWidth="lg">
+      <Container component={"section"} maxWidth="xl">
         <Box className={classes.wrapper} component={"article"}>
           <TopNavBarInfo />
           <TopNavMenus />

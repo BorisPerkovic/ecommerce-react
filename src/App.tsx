@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { ThemeProvider } from "@mui/styles";
 import { useAppTheme } from "./theme/useAppTheme";
 import { SearchBar } from "./nav-bars/search-bar/SearchBar";
+import { HerroBanner } from "./hero-banner/HerroBanner";
 
 const App = () => {
   const theme = useAppTheme();
@@ -22,6 +23,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <TopNavBar />
       <SearchBar />
+      <HerroBanner />
     </ThemeProvider>
   );
 };
