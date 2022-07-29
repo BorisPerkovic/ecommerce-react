@@ -3,7 +3,6 @@ import { createTheme, Theme } from "@mui/material";
 
 export const lightTheme: Theme = createTheme({
   palette: {
-    mode: "light",
     common: {
       white: LightThemePaletteColors.WHITE,
       black: LightThemePaletteColors.BLACK,
@@ -12,6 +11,14 @@ export const lightTheme: Theme = createTheme({
       light: LightThemePaletteColors.WHITE,
       main: LightThemePaletteColors.PRIMARY,
       dark: LightThemePaletteColors.PRIMARY_DARK,
+    },
+    secondary: {
+      light: LightThemePaletteColors.SECONDARY_LIGHT,
+      main: LightThemePaletteColors.SECONDARY,
+      dark: LightThemePaletteColors.SECONDARY_DARK,
+    },
+    error: {
+      main: LightThemePaletteColors.ERROR,
     },
     background: {
       paper: LightThemePaletteColors.PAPER_BACKGROUND,

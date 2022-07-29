@@ -1,10 +1,17 @@
 export enum LightThemePaletteColors {
   WHITE = "#ffffff",
   BLACK = "#000000",
+
   PRIMARY = "#103460",
   PRIMARY_LIGHT = "#FFFFFF",
   PRIMARY_DARK = "#103460",
 
-  BACKGROUND = "#f6f9fc",
+  SECONDARY = "#A3A8AE",
+  SECONDARY_LIGHT = "#103460",
+  SECONDARY_DARK = "#103460",
+
+  ERROR = "#EB0D3F",
+
+  BACKGROUND = "#F2F5F9",
   PAPER_BACKGROUND = "#FFFFFF",
 }

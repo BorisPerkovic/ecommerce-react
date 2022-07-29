@@ -6,6 +6,7 @@ import i18n from "i18next";
 import { useSelector } from "react-redux";
 import { ThemeProvider } from "@mui/styles";
 import { useAppTheme } from "./theme/useAppTheme";
+import { SearchBar } from "./nav-bars/search-bar/SearchBar";
 
 const App = () => {
   const theme = useAppTheme();
@@ -20,6 +21,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <TopNavBar />
+      <SearchBar />
     </ThemeProvider>
   );
 };
