@@ -1,21 +1,19 @@
 import { MenuItem, MenuItemProps } from "@mui/material";
 import { FunctionComponent } from "react";
-import { useTranslation } from "react-i18next";
 import { useAppTheme } from "../theme/useAppTheme";
 
 interface ECMenuItemProps extends MenuItemProps {
   itemColor?: string;
   label: string;
-  onClose: () => void;
+  onAction: () => void;
 }
 
 export const ECMenuItem: FunctionComponent<ECMenuItemProps> = ({
   itemColor,
   label,
-  onClose,
+  onAction,
 }) => {
   const { palette } = useAppTheme();
-  const { t } = useTranslation("navigation");
   return (
     <MenuItem
       sx={{
@@ -27,9 +25,9 @@ export const ECMenuItem: FunctionComponent<ECMenuItemProps> = ({
           opacity: 0.6,
         },
       }}
-      onClick={onClose}
+      onClick={onAction}
     >
-      {t(label)}
+      {label}
     </MenuItem>
   );
 };

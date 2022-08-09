@@ -45,8 +45,8 @@ export const SelectThemeMenu = () => {
         onClose={handleOnClose}
       >
         <ECMenuItem
-          label="lightTheme"
-          onClose={async () => {
+          label={t("lightTheme")}
+          onAction={async () => {
             handleOnClose();
             setTimeout(() => {
               dispatch(changeTheme("light"));
@@ -54,8 +54,8 @@ export const SelectThemeMenu = () => {
           }}
         />
         <ECMenuItem
-          label="darkTheme"
-          onClose={() => {
+          label={t("darkTheme")}
+          onAction={() => {
             handleOnClose();
             setTimeout(() => {
               dispatch(changeTheme("dark"));

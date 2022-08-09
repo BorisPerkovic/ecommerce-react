@@ -54,8 +54,8 @@ export const SelectLanguageMenu = () => {
           return (
             <ECMenuItem
               key={language.languageTag}
-              label={language.languageLabel}
-              onClose={() => {
+              label={t(language.languageLabel)}
+              onAction={() => {
                 handleOnClose();
                 setTimeout(() => {
                   dispatch(

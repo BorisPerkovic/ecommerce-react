@@ -1,16 +1,15 @@
-import {
-  combineReducers,
-  configureStore,
-  getDefaultMiddleware,
-} from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import thunkMiddleware from "redux-thunk";
 import { persistStore, persistReducer } from "redux-persist";
 import localStorage from "redux-persist/es/storage";
 import themeReducer from "./theme/themeSlice";
 import languageReducer from "./nav-bars/top-nav-bar/menus/changeLanguageSlice";
+import searchProductsReducer from "./nav-bars/search-bar/searchSlice";
 
 const rootReducer = combineReducers({
   theme: themeReducer,
   language: languageReducer,
+  search: searchProductsReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -21,19 +20,11 @@ const persistConfig = {
   whitelist: ["theme", "language"],
 };
 
-const middleware = [
-  ...getDefaultMiddleware({
-    // NOTE: Disabled since we use immer
-    immutableCheck: false,
-    serializableCheck: false,
-  }),
-];
-
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware,
+  middleware: [thunkMiddleware],
   devTools: false,
 });
 

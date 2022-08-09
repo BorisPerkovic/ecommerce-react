@@ -11,11 +11,14 @@ interface ECOutlinedInputFieldProps extends OutlinedInputProps {
   placeholder: string;
   startAndorment?: React.ReactNode;
   endAndorment?: React.ReactNode;
+  onChange: (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => void;
 }
 
 export const ECOutlinedInputField: FunctionComponent<
   ECOutlinedInputFieldProps
-> = ({ placeholder, startAdornment, endAdornment }) => {
+> = ({ placeholder, startAdornment, endAdornment, onChange }) => {
   const { palette } = useAppTheme();
 
   return (
@@ -48,7 +51,12 @@ export const ECOutlinedInputField: FunctionComponent<
         InputProps={{
           startAdornment: startAdornment ? (
             <InputAdornment
-              sx={{ color: palette.secondary.main, padding: "0px 5px" }}
+              sx={{
+                color: palette.secondary.main,
+                padding: "0px 5px",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
               position="start"
             >
               {startAdornment}
@@ -56,13 +64,20 @@ export const ECOutlinedInputField: FunctionComponent<
           ) : null,
           endAdornment: endAdornment ? (
             <InputAdornment
-              sx={{ color: palette.secondary.main, padding: "0px 5px" }}
+              sx={{
+                color: palette.secondary.main,
+                padding: "0px 5px",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
               position="end"
             >
               {endAdornment}
             </InputAdornment>
           ) : null,
         }}
+        onChange={onChange}
+        autoComplete="off"
       />
     </FormControl>
   );
