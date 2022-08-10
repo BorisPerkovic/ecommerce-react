@@ -9,5 +9,7 @@
   "searchFor": "Search For...",
   "shopAndService": "Shop And Service",
   "modernEcommerce": "Modern Ecommerce",
+  "noSearchItems": "We don't have products match your search term",
+  "wentWrong": "Something went wrong. Please, try again later",
   "bannerDecription": "Modern ecommerce application was created as an exercise while learning front end technologies such as React, Javascript, Redux, MUI, and so on. Enjoy the app and have fun in this shopping adventure."
 }

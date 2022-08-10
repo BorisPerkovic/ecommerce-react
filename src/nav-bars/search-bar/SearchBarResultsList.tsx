@@ -1,48 +1,53 @@
 import { Paper } from "@mui/material";
+import { Fragment, FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import { ECMenuItem } from "../../components/ECMenuItem";
 import { ECText } from "../../components/ECText";
-import { RootState } from "../../store";
+import { SearchProductsModel } from "../../shared/models";
 import { useAppTheme } from "../../theme/useAppTheme";
 
-export const SearchBarResultsList = () => {
-  const products = useSelector(
-    (state: RootState) => state.search.searchProducts
-  );
+interface SearchBarResultsListProps {
+  products: SearchProductsModel[];
+}
+
+export const SearchBarResultsList: FunctionComponent<
+  SearchBarResultsListProps
+> = ({ products }) => {
   const { palette } = useAppTheme();
-  const { t } = useTranslation("products");
+  const { t } = useTranslation("navigation");
 
   return (
-    <Paper
-      sx={{
-        position: "absolute",
-        zIndex: "10",
-        top: "53px",
-        width: "97%",
-        backgroundColor: palette.background.paper,
-        padding: "5px 10px",
-        maxHeight: "70vh",
-        overflow: "scroll",
-        overflowX: "hidden",
-      }}
-    >
-      {products.length > 0
-        ? products.map((product) => {
-            return (
-              <ECMenuItem
-                key={product.productsId}
-                label={product.productsTitle}
-                onAction={() => console.log("item clicked")}
-              />
-            );
-          })
-        : null}
-      {products.length === 0 ? (
-        <ECText fontSize={16} component="p">
-          {t("noSearchitems")}
-        </ECText>
-      ) : null}
-    </Paper>
+    <Fragment>
+      <Paper
+        sx={{
+          position: "absolute",
+          zIndex: "10",
+          top: "53px",
+          width: "97%",
+          backgroundColor: palette.background.paper,
+          padding: "5px 10px",
+          maxHeight: "70vh",
+          overflow: "scroll",
+          overflowX: "hidden",
+        }}
+      >
+        {products.length > 0
+          ? products.map((product) => {
+              return (
+                <ECMenuItem
+                  key={product.productsId}
+                  label={product.productsTitle}
+                  onAction={() => console.log("item clicked")}
+                />
+              );
+            })
+          : null}
+        {products.length === 0 ? (
+          <ECText fontSize={16} component="p">
+            {t("noSearchItems")}
+          </ECText>
+        ) : null}
+      </Paper>
+    </Fragment>
   );
 };

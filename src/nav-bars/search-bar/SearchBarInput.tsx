@@ -5,20 +5,20 @@ import { SearchBarResultsList } from "./SearchBarResultsList";
 import { Controller, useForm } from "react-hook-form";
 import { useDebouncedCallback } from "use-debounce";
 import CircularProgress from "@mui/material/CircularProgress";
-import { useDispatch } from "react-redux";
-import { searchProductsThunk } from "./searchSlice";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { resetLoadingToIdle, searchProductsThunk } from "./searchSlice";
 import { useAppTheme } from "../../theme/useAppTheme";
 import { Box } from "@mui/material";
+import { RootState } from "../../store";
+import { ECAlert } from "../../components/ECAlert";
 
 interface FormData {
   search: string;
 }
 
 export const SearchBarInput = () => {
-  const [isLoading, setIsLoading] = useState<"idle" | "fullfiled" | "pending">(
-    "idle"
-  );
+  const searchProducts = useSelector((state: RootState) => state.search);
+
   const dispatch = useDispatch<any>();
   const { t } = useTranslation("navigation");
   const { palette } = useAppTheme();
@@ -33,16 +33,10 @@ export const SearchBarInput = () => {
   const debounced = useDebouncedCallback(
     (param: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const searchParam = param.target.value;
-      setIsLoading("pending");
       if (searchParam === "") {
-        setTimeout(() => {
-          setIsLoading("idle");
-        }, 200);
+        dispatch(resetLoadingToIdle());
       } else {
         dispatch(searchProductsThunk(searchParam));
-        setTimeout(() => {
-          setIsLoading("fullfiled");
-        }, 2000);
       }
     },
     700
@@ -56,7 +50,7 @@ export const SearchBarInput = () => {
           <ECOutlinedInputField
             placeholder={t("searchFor")}
             startAdornment={
-              isLoading === "pending" ? (
+              searchProducts.loading === "pending" ? (
                 <CircularProgress
                   sx={{ color: palette.secondary.main }}
                   size={24}
@@ -72,7 +66,12 @@ export const SearchBarInput = () => {
         )}
         name="search"
       />
-      {isLoading === "fullfiled" ? <SearchBarResultsList /> : null}
+      {searchProducts.loading === "succeeded" ? (
+        <SearchBarResultsList products={searchProducts.searchProducts} />
+      ) : null}
+      {searchProducts.loading === "failed" ? (
+        <ECAlert variant="filled" severity="error" message={t("wentWrong")} />
+      ) : null}
     </Box>
   );
 };

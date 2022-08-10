@@ -9,5 +9,7 @@
   "searchFor": "Cercare...",
   "shopAndService": "Negozio e Servizio",
   "modernEcommerce": "Ecommercio Moderno",
+  "noSearchItems": "Non abbiamo prodotti per il tuo termine di ricerca",
+  "wentWrong": "Qualcosa è andato storto. Per favore riprova più tardi",
   "bannerDecription": "Moderna applicazione di e-commerce creata come esercizio durante l'apprendimento di tecnologie front-end come React, Javascript, Redux, MUI e così via. Goditi l'app e divertiti in questa avventura di shopping."
 }

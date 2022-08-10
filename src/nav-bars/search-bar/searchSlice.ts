@@ -27,10 +27,14 @@ export const searchProductsThunk = createAsyncThunk(
 export const searchProductsSlice = createSlice({
   name: "search",
   initialState,
-  reducers: {},
+  reducers: {
+    resetLoadingToIdle: (state) => {
+      state.loading = "idle";
+    },
+  },
   extraReducers: (builder) => {
     builder
-      .addCase(searchProductsThunk.pending, (state) => {
+      .addCase(searchProductsThunk.pending, (state, action) => {
         state.loading = "pending";
       })
       .addCase(searchProductsThunk.fulfilled, (state, { payload }) => {
@@ -47,5 +51,7 @@ export const searchProductsSlice = createSlice({
       });
   },
 });
+
+export const { resetLoadingToIdle } = searchProductsSlice.actions;
 
 export default searchProductsSlice.reducer;
