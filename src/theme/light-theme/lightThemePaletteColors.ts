@@ -13,6 +13,7 @@ export enum LightThemePaletteColors {
   ERROR = "#EB0D3F",
 
   GRAY_200 = "#eaeaea",
+  GRAY_300 = "#f6f9fc",
 
   BACKGROUND = "#F2F5F9",
   PAPER_BACKGROUND = "#FFFFFF",

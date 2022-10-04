@@ -8,6 +8,12 @@ import NavBarsTranslationsDE from "../nav-bars/translations/navigationTranslatio
 import NavBarsTranslationsES from "../nav-bars/translations/navigationTranslations.es.json";
 import NavBarsTranslationsIT from "../nav-bars/translations/navigationTranslations.it.json";
 
+//Products
+import ProductsTranslationsEN from "../products/translations/productsTranslations.en.json";
+import ProductsTranslationsDE from "../products/translations/productsTranslations.de.json";
+import ProductsTranslationsES from "../products/translations/productsTranslations.es.json";
+import ProductsTranslationsIT from "../products/translations/productsTranslations.it.json";
+
 //Account
 /* import AccountTranslationsEN from '../account/translations/accountTranslations.en.json';
 import AccountTranslationsDE from '../account/translations/accountTranslations.de.json';
@@ -23,15 +29,19 @@ import OrderTranslationsIT from '../order/translations/ordersTranslations.it.jso
 const resources = {
   en: {
     navigation: NavBarsTranslationsEN,
+    products: ProductsTranslationsEN,
   },
   de: {
     navigation: NavBarsTranslationsDE,
+    products: ProductsTranslationsDE,
   },
   es: {
     navigation: NavBarsTranslationsES,
+    products: ProductsTranslationsES,
   },
   it: {
     navigation: NavBarsTranslationsIT,
+    products: ProductsTranslationsIT,
   },
 };
 

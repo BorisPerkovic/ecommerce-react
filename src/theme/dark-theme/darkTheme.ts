@@ -22,6 +22,7 @@ export const darkTheme: Theme = createTheme({
     },
     grey: {
       "200": DarkThemePaletteColors.GRAY_200,
+      "300": DarkThemePaletteColors.GRAY_300,
     },
     background: {
       paper: DarkThemePaletteColors.PAPER_BACKGROUND,

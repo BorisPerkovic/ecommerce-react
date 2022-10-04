@@ -8,6 +8,7 @@ import { ThemeProvider } from "@mui/styles";
 import { useAppTheme } from "./theme/useAppTheme";
 import { SearchBar } from "./nav-bars/search-bar/SearchBar";
 import { HerroBanner } from "./hero-banner/HerroBanner";
+import { Main } from "./products/Main";
 
 const App = () => {
   const theme = useAppTheme();
@@ -24,6 +25,7 @@ const App = () => {
       <TopNavBar />
       <SearchBar />
       <HerroBanner />
+      <Main />
     </ThemeProvider>
   );
 };

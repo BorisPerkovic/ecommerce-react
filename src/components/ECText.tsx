@@ -8,7 +8,7 @@ export interface ECTextPorps extends TypographyProps {
   textColor?: string;
   textAlign?: "left" | "center" | "right";
   component: "h1" | "h2" | "h3" | "h4" | "p";
-  fontSize?: 12 | 16 | 24 | 32 | 40 | 48 | 56 | 64;
+  fontSize?: 12 | 14 | 16 | 24 | 32 | 40 | 48 | 56 | 64;
   children: any;
   space?: string;
 }
