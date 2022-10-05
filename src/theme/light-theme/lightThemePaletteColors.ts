@@ -14,6 +14,7 @@ export enum LightThemePaletteColors {
 
   GRAY_200 = "#eaeaea",
   GRAY_300 = "#f6f9fc",
+  GRAY_400 = "0px 1px 3px rgb(3 0 71 / 9%)",
 
   BACKGROUND = "#F2F5F9",
   PAPER_BACKGROUND = "#FFFFFF",

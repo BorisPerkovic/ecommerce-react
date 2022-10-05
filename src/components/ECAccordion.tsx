@@ -35,6 +35,7 @@ export const ECAccordion: FunctionComponent<ECAccordionProps> = ({
         padding: "0px 10px",
         backgroundColor: palette.background.paper,
         color: palette.primary.main,
+        boxShadow: palette.grey[400],
         "& .MuiAccordionSummary-content:hover": {
           color: palette.error.main,
           transition: "all 0.2s",

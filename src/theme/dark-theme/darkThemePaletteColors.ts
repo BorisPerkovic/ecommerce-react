@@ -14,6 +14,7 @@ export enum DarkThemePaletteColors {
 
   GRAY_200 = "#171717",
   GRAY_300 = "#0e1117",
+  GRAY_400 = "0px 1px 3px rgb(3 0 71 / 9%)",
 
   BACKGROUND = "#0e1117",
   PAPER_BACKGROUND = "#292929",

@@ -1,7 +1,7 @@
 import { Box, Container, Grid } from "@mui/material";
-import { ECText } from "../components/ECText";
 import { ProductsSideNavBar } from "../nav-bars/side-nav-bars/ProductsSideNavBar";
 import { useAppTheme } from "../theme/useAppTheme";
+import { ProductsItems } from "./ProductsItems";
 
 export const Main = () => {
   const { palette } = useAppTheme();
@@ -9,18 +9,19 @@ export const Main = () => {
     <Box component={"main"} bgcolor={palette.grey[300]}>
       <Container maxWidth="xl">
         <Grid container paddingY={10}>
-          <Grid component={"aside"} item xs={3}>
+          <Grid component={"aside"} item xs={2}>
             <ProductsSideNavBar />
           </Grid>
 
           <Grid
+            component={"section"}
             display={"flex"}
             flexDirection="column"
             justifyContent={"center"}
             item
-            xs={9}
+            xs={10}
           >
-            <ECText component="p">Products</ECText>
+            <ProductsItems />
           </Grid>
         </Grid>
       </Container>

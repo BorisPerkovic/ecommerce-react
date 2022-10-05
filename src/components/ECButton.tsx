@@ -38,6 +38,7 @@ export const ECButton: FunctionComponent<ECButtonProps> = ({
       sx={{
         fontFamily: "Montserrat, sans-serif",
         fontSize: fontSize || "16px",
+        textTransform: "none",
         borderRadius: "10px",
         "& .MuiButton-text": {
           backgroundColor: color || "transparent",
@@ -48,7 +49,6 @@ export const ECButton: FunctionComponent<ECButtonProps> = ({
       variant={variant}
       endIcon={endIcon ? endIcon : null}
       startIcon={startIcon ? startIcon : null}
-      disableRipple={true}
       disabled={disabled}
       fullWidth
       onClick={onAction}
