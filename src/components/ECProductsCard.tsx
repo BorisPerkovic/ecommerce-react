@@ -11,8 +11,23 @@ import { ECText } from "./ECText";
 import { ECCardIconButton } from "./ECCardIconButton";
 import { ECRating } from "./ECRating";
 import { ECButton } from "./ECButton";
+import { FunctionComponent } from "react";
 
-export const ECProductsCard = () => {
+interface ECProductsCardProps {
+  id: number;
+  title: string;
+  price: number;
+  rating: number;
+  image: string;
+}
+
+export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
+  id,
+  title,
+  price,
+  rating,
+  image,
+}) => {
   const { palette } = useAppTheme();
   const isFavorite = false;
   return (
@@ -48,25 +63,26 @@ export const ECProductsCard = () => {
       </Box>
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         <img
-          src="https://borisperkovic.rs/e-commerce/assets/images/56.png"
-          alt="dsadsa"
+          src={image}
+          alt={title}
           style={{ maxHeight: 150, alignSelf: "center", margin: "10px 0px" }}
         />
       </Box>
       <CardContent>
         <Box marginBottom={1}>
           <ECText component="p" fontSize={14}>
-            Sony Xperia X
+            {title}
           </ECText>
         </Box>
-        <ECRating name="read-only" value={3} readonly size="small" />
+        <ECRating name="read-only" value={rating} readonly size="small" />
         <Box marginTop={1} marginBottom={2}>
           <ECText component="p" fontSize={14} textColor={palette.error.main}>
-            $ 203.00
+            ${price}
           </ECText>
         </Box>
         <ECButton
           variant="outlined"
+          color="primary"
           label="Add to Card"
           endIcon={<AddShoppingCartIcon />}
         />

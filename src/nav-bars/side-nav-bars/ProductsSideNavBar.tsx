@@ -1,17 +1,37 @@
 import { AccordionDetails } from "@mui/material";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { ECAccordion } from "../../components/ECAccordion";
 import { ECText } from "../../components/ECText";
+import { endpoints } from "../../endpoints/endpoints";
+import { getProducts } from "../../products/productsSlice";
 import { categories } from "../../shared/ProductsCategories";
+import { AppThunkDispatch } from "../../store";
 
 export const ProductsSideNavBar = () => {
   const [expanded, setExpanded] = useState<boolean | string>(false);
+  const [url, setUrl] = useState<string>(
+    `${endpoints.BASE_URL}${endpoints.PRODUCTS}`
+  );
 
   const handleChange = (isExpanded: boolean, panel: string) => {
     setExpanded(isExpanded ? panel : false);
   };
   const { t } = useTranslation("products");
+
+  const dispatch = useDispatch<AppThunkDispatch>();
+  useEffect(() => {
+    let mounted = true;
+    if (mounted) {
+      dispatch(getProducts(url));
+    }
+
+    return () => {
+      mounted = false;
+    };
+  }, [dispatch, url]);
+
   return (
     <Fragment>
       <ECAccordion
