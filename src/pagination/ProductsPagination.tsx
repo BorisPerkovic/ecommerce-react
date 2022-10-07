@@ -28,8 +28,8 @@ export const ProductsPagination: FunctionComponent<ProductsPaginationProps> = ({
         "& .MuiPaginationItem-circular": {
           color: palette.primary.main,
         },
-        "& .Mui-selected": {
-          backgroundColor: palette.background.default,
+        "& .MuiPaginationItem-root.Mui-selected": {
+          backgroundColor: palette.background.paper,
           color: palette.primary.main,
           border: `1px solid ${palette.primary.main}`,
         },

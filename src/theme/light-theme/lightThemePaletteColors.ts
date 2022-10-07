@@ -12,6 +12,12 @@ export enum LightThemePaletteColors {
 
   ERROR = "#EB0D3F",
 
+  SUCCESS = "#029640",
+
+  WARNING = "#FFD100",
+
+  INFO = "#6A767D",
+
   GRAY_200 = "#eaeaea",
   GRAY_300 = "#f6f9fc",
   GRAY_400 = "0px 1px 3px rgb(3 0 71 / 9%)",

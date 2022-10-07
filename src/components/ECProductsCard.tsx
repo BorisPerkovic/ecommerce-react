@@ -1,17 +1,15 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Box } from "@mui/material";
 
 import { useAppTheme } from "../theme/useAppTheme";
 import { ECText } from "./ECText";
-import { ECCardIconButton } from "./ECCardIconButton";
 import { ECRating } from "./ECRating";
 import { ECButton } from "./ECButton";
 import { FunctionComponent } from "react";
+import { AddToFavoritesButton } from "../products/procuts-card-buttons/AddToFavoritesButton";
 
 interface ECProductsCardProps {
   id: number;
@@ -29,7 +27,6 @@ export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
   image,
 }) => {
   const { palette } = useAppTheme();
-  const isFavorite = false;
   return (
     <Card
       sx={{
@@ -44,22 +41,7 @@ export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
         alignItems={"center"}
         padding={1}
       >
-        <ECCardIconButton
-          ariaLabel="view more"
-          icon={
-            isFavorite ? (
-              <FavoriteIcon fontSize="small" />
-            ) : (
-              <FavoriteBorderIcon fontSize="small" />
-            )
-          }
-          onAction={() => {}}
-        />
-        <ECCardIconButton
-          ariaLabel="add to favorites"
-          icon={<FullscreenIcon fontSize="small" />}
-          onAction={() => {}}
-        />
+        <AddToFavoritesButton />
       </Box>
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         <img
