@@ -65,7 +65,11 @@ export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
         <img
           src={image}
           alt={title}
-          style={{ maxHeight: 150, alignSelf: "center", margin: "10px 0px" }}
+          style={{
+            maxHeight: 120,
+            alignSelf: "center",
+            margin: "10px 0px",
+          }}
         />
       </Box>
       <CardContent>

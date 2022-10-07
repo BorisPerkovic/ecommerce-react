@@ -29,7 +29,7 @@ export const ProductsPagination: FunctionComponent<ProductsPaginationProps> = ({
           color: palette.primary.main,
         },
         "& .Mui-selected": {
-          backgroundColor: palette.background.paper,
+          backgroundColor: palette.background.default,
           color: palette.primary.main,
           border: `1px solid ${palette.primary.main}`,
         },

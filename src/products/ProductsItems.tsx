@@ -3,7 +3,7 @@ import { Box, Grid } from "@mui/material";
 import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ECProductsCard } from "../components/ECProductsCard";
-import { ECText } from "../components/ECText";
+import { ECProductsCardSkeleteon } from "../components/ECProductsCardSkeleteon";
 import { ProductsPagination } from "../pagination/ProductsPagination";
 import { RootState } from "../store";
 import { setTimeoutLoading } from "./productsSlice";
@@ -24,7 +24,7 @@ export const ProductsItems = () => {
     <Fragment>
       <Grid container display={"flex"} spacing={{ xs: 2 }} paddingX={2}>
         {productsStatus.loading === "pending" ? (
-          <ECText component="p">Loading...</ECText>
+          <ECProductsCardSkeleteon />
         ) : null}
         {productsStatus.loading === "succeeded"
           ? paginationProducts.map((product, index) => {

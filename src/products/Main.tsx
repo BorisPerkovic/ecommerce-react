@@ -6,7 +6,11 @@ import { ProductsItems } from "./ProductsItems";
 export const Main = () => {
   const { palette } = useAppTheme();
   return (
-    <Box component={"main"} bgcolor={palette.grey[300]}>
+    <Box
+      component={"main"}
+      bgcolor={palette.grey[300]}
+      sx={{ minHeight: "1200px" }}
+    >
       <Container maxWidth="xl">
         <Grid container paddingTop={10}>
           <Grid component={"aside"} item xs={2}>
