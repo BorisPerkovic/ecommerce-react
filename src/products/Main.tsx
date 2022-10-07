@@ -8,7 +8,7 @@ export const Main = () => {
   return (
     <Box component={"main"} bgcolor={palette.grey[300]}>
       <Container maxWidth="xl">
-        <Grid container paddingY={10}>
+        <Grid container paddingTop={10}>
           <Grid component={"aside"} item xs={2}>
             <ProductsSideNavBar />
           </Grid>

@@ -6,11 +6,13 @@ import { ProductsModelDto } from "../shared/modelsDto";
 interface ProductsState {
   products: ProductsModel[];
   loading: "idle" | "pending" | "succeeded" | "failed";
+  paginationProducts: ProductsModel[];
 }
 
 const initialState: ProductsState = {
   products: [],
   loading: "idle",
+  paginationProducts: [],
 };
 
 export const getProducts = createAsyncThunk(
@@ -24,7 +26,15 @@ export const getProducts = createAsyncThunk(
 export const productsSlice = createSlice({
   name: "products",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setPaginationProducts(state, { payload }) {
+      state.loading = "pending";
+      state.paginationProducts = state.products.slice(payload.from, payload.to);
+    },
+    setTimeoutLoading(state) {
+      state.loading = "succeeded";
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getProducts.pending, (state) => {
@@ -45,11 +55,15 @@ export const productsSlice = createSlice({
             es: item.es,
           };
         });
+        state.paginationProducts = state.products.slice(0, 12);
       })
       .addCase(getProducts.rejected, (state) => {
         state.loading = "failed";
       });
   },
 });
+
+export const { setPaginationProducts, setTimeoutLoading } =
+  productsSlice.actions;
 
 export default productsSlice.reducer;
