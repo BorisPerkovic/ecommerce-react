@@ -4,5 +4,7 @@
   "telephones": "Telefonos",
   "laptops": "Tortátiles",
   "audio": "Audio",
-  "cameras": "cámaras de fotos"
+  "cameras": "cámaras de fotos",
+  "addedToFavorites": "producto añadido a favoritos",
+  "removeFromFavorites": "producto eliminado de favoritos"
 }

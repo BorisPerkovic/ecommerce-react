@@ -1,13 +1,51 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, FunctionComponent, useState } from "react";
 import { ECCardIconButton } from "../../components/ECCardIconButton";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { ECSnackbar } from "../../components/ECSnackbar";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../favorites/favoritesSlice";
+import { useTranslation } from "react-i18next";
 
-export const AddToFavoritesButton = () => {
+interface AddToFavoritesButtonProps {
+  id: number;
+  title: string;
+  price: number;
+  rating: number;
+  image: string;
+}
+
+export const AddToFavoritesButton: FunctionComponent<
+  AddToFavoritesButtonProps
+> = ({ id, title, price, rating, image }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const favorites = useSelector(
+    (state: RootState) => state.favorites.favoritesItems
+  );
+  const isFavorite = favorites.findIndex((item) => item.productsId === id) >= 0;
+
+  const dispatch = useDispatch();
+  const { t } = useTranslation("products");
 
   const handleOpen = () => {
+    if (isFavorite) {
+      dispatch(removeFromFavorites(id));
+    } else {
+      dispatch(
+        addToFavorites({
+          productsId: id,
+          productsTitle: title,
+          productsImage: image,
+          productsRating: rating,
+          productsPrice: price,
+        })
+      );
+    }
+
     setOpen(true);
   };
 
@@ -21,7 +59,7 @@ export const AddToFavoritesButton = () => {
 
     setOpen(false);
   };
-  const isFavorite = false;
+
   return (
     <Fragment>
       <ECCardIconButton
@@ -37,8 +75,12 @@ export const AddToFavoritesButton = () => {
       />
       <ECSnackbar
         openSnackbar={open}
-        severity="success"
-        message={`added to favorites`}
+        severity={isFavorite ? "success" : "error"}
+        message={
+          isFavorite
+            ? `${title} ${t("addedToFavorites")}`
+            : `${title} ${t("removeFromFavorites")}`
+        }
         onClose={handleClose}
       />
     </Fragment>

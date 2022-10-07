@@ -3,8 +3,14 @@ import { ECIconButton } from "../../components/ECIconButton";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 export const SearchBarIcons = () => {
+  const favorites = useSelector(
+    (state: RootState) => state.favorites.favoritesItems
+  );
+  console.log(favorites.length);
   return (
     <Box display={"flex"} justifyContent={"flex-end"} alignItems={"end"}>
       <ECIconButton ariaLabel="user" onAction={() => console.log("clicked")}>
@@ -19,7 +25,7 @@ export const SearchBarIcons = () => {
       </ECIconButton>
       <ECIconButton
         ariaLabel="favorites"
-        badge={3}
+        badge={favorites.length || "0"}
         onAction={() => console.log("clicked")}
       >
         <FavoriteBorderOutlinedIcon />

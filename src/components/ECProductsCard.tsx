@@ -41,7 +41,13 @@ export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
         alignItems={"center"}
         padding={1}
       >
-        <AddToFavoritesButton />
+        <AddToFavoritesButton
+          id={id}
+          title={title}
+          image={image}
+          price={price}
+          rating={rating}
+        />
       </Box>
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         <img

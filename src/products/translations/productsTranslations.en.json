@@ -4,5 +4,7 @@
   "telephones": "Telephones",
   "laptops": "Laptops",
   "cameras": "Cameras",
-  "audio": "Audio"
+  "audio": "Audio",
+  "addedToFavorites": "product added to favorites",
+  "removeFromFavorites": "product removed from favorites"
 }

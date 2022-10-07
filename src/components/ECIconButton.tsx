@@ -4,7 +4,7 @@ import React, { FunctionComponent } from "react";
 import { useAppTheme } from "../theme/useAppTheme";
 
 interface ECIConButtonProps extends IconButtonProps {
-  badge?: number;
+  badge?: number | string;
   ariaLabel: string;
   children: React.ReactNode;
   onAction: () => void;
