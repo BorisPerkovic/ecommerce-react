@@ -28,11 +28,18 @@ export const productsSlice = createSlice({
   initialState: initialState,
   reducers: {
     setPaginationProducts(state, { payload }) {
-      state.loading = "pending";
-      state.paginationProducts = state.products.slice(payload.from, payload.to);
+      if (state.loading !== "failed") {
+        state.loading = "pending";
+        state.paginationProducts = state.products.slice(
+          payload.from,
+          payload.to
+        );
+      }
     },
     setTimeoutLoading(state) {
-      state.loading = "succeeded";
+      if (state.loading !== "failed") {
+        state.loading = "succeeded";
+      }
     },
   },
   extraReducers: (builder) => {

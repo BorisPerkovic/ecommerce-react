@@ -1,15 +1,13 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import { Box } from "@mui/material";
-
 import { useAppTheme } from "../theme/useAppTheme";
 import { ECText } from "./ECText";
 import { ECRating } from "./ECRating";
-import { ECButton } from "./ECButton";
 import { FunctionComponent } from "react";
-import { AddToFavoritesButton } from "../products/procuts-card-buttons/AddToFavoritesButton";
+import { AddToFavoritesButton } from "../products/products-card-buttons/AddToFavoritesButton";
+import { ViewMoreModal } from "../products/products-card-buttons/ViewMoreModal";
+import { AddToCartButton } from "../products/products-card-buttons/AddToCartButton";
 
 interface ECProductsCardProps {
   id: number;
@@ -17,6 +15,9 @@ interface ECProductsCardProps {
   price: number;
   rating: number;
   image: string;
+  addToFavoritesIcon?: boolean;
+  viewMoreIcon?: boolean;
+  description: string | number;
 }
 
 export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
@@ -25,6 +26,9 @@ export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
   price,
   rating,
   image,
+  addToFavoritesIcon,
+  viewMoreIcon,
+  description,
 }) => {
   const { palette } = useAppTheme();
   return (
@@ -41,13 +45,24 @@ export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
         alignItems={"center"}
         padding={1}
       >
-        <AddToFavoritesButton
-          id={id}
-          title={title}
-          image={image}
-          price={price}
-          rating={rating}
-        />
+        {addToFavoritesIcon ? (
+          <AddToFavoritesButton
+            id={id}
+            title={title}
+            image={image}
+            price={price}
+            rating={rating}
+          />
+        ) : null}
+        {viewMoreIcon ? (
+          <ViewMoreModal
+            title={title}
+            price={price}
+            rating={rating}
+            description={description}
+            image={image}
+          />
+        ) : null}
       </Box>
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         <img
@@ -72,12 +87,7 @@ export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
             ${price}
           </ECText>
         </Box>
-        <ECButton
-          variant="outlined"
-          color="primary"
-          label="Add to Card"
-          endIcon={<AddShoppingCartIcon />}
-        />
+        <AddToCartButton />
       </CardContent>
     </Card>
   );

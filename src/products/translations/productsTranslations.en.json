@@ -6,5 +6,7 @@
   "cameras": "Cameras",
   "audio": "Audio",
   "addedToFavorites": "product added to favorites",
-  "removeFromFavorites": "product removed from favorites"
+  "removeFromFavorites": "product removed from favorites",
+  "addToCart": "Add To Cart",
+  "wentWrong": "Something went wrong. Please, try again later"
 }
