@@ -14,7 +14,6 @@ export const favortesSlice = createSlice({
   initialState,
   reducers: {
     addToFavorites(state, { payload }) {
-      console.log({ payload });
       state.favoritesItems.push(payload);
     },
     removeFromFavorites(state, { payload }) {

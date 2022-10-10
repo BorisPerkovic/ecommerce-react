@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./App.css";
+import { SnackbarProvider } from "notistack";
 import { TopNavBar } from "./nav-bars/top-nav-bar/TopNavBar";
 import { RootState } from "./store";
 import i18n from "i18next";
@@ -22,10 +23,12 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <TopNavBar />
-      <SearchBar />
-      <HerroBanner />
-      <Main />
+      <SnackbarProvider maxSnack={2} autoHideDuration={3000}>
+        <TopNavBar />
+        <SearchBar />
+        <HerroBanner />
+        <Main />
+      </SnackbarProvider>
     </ThemeProvider>
   );
 };

@@ -10,7 +10,6 @@ export const SearchBarIcons = () => {
   const favorites = useSelector(
     (state: RootState) => state.favorites.favoritesItems
   );
-  console.log(favorites.length);
   return (
     <Box display={"flex"} justifyContent={"flex-end"} alignItems={"end"}>
       <ECIconButton ariaLabel="user" onAction={() => console.log("clicked")}>

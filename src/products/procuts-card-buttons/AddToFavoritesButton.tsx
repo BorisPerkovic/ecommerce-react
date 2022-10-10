@@ -1,8 +1,7 @@
-import React, { Fragment, FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import { ECCardIconButton } from "../../components/ECCardIconButton";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { ECSnackbar } from "../../components/ECSnackbar";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import {
@@ -10,6 +9,7 @@ import {
   removeFromFavorites,
 } from "../../favorites/favoritesSlice";
 import { useTranslation } from "react-i18next";
+import { VariantType, useSnackbar } from "notistack";
 
 interface AddToFavoritesButtonProps {
   id: number;
@@ -22,7 +22,7 @@ interface AddToFavoritesButtonProps {
 export const AddToFavoritesButton: FunctionComponent<
   AddToFavoritesButtonProps
 > = ({ id, title, price, rating, image }) => {
-  const [open, setOpen] = useState<boolean>(false);
+  const { enqueueSnackbar } = useSnackbar();
   const favorites = useSelector(
     (state: RootState) => state.favorites.favoritesItems
   );
@@ -31,58 +31,41 @@ export const AddToFavoritesButton: FunctionComponent<
   const dispatch = useDispatch();
   const { t } = useTranslation("products");
 
-  const handleOpen = () => {
-    if (isFavorite) {
-      dispatch(removeFromFavorites(id));
-    } else {
-      dispatch(
-        addToFavorites({
-          productsId: id,
-          productsTitle: title,
-          productsImage: image,
-          productsRating: rating,
-          productsPrice: price,
-        })
-      );
-    }
-
-    setOpen(true);
+  const handleRemove = (variant: VariantType) => {
+    dispatch(removeFromFavorites(id));
+    enqueueSnackbar(`${title} ${t("removeFromFavorites")}`, { variant });
   };
 
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
+  const handleAdd = (variant: VariantType) => {
+    dispatch(
+      addToFavorites({
+        productsId: id,
+        productsTitle: title,
+        productsImage: image,
+        productsRating: rating,
+        productsPrice: price,
+      })
+    );
+    enqueueSnackbar(`${title} ${t("addedToFavorites")}`, { variant });
   };
 
   return (
-    <Fragment>
-      <ECCardIconButton
-        ariaLabel="add to favorites"
-        icon={
-          isFavorite ? (
-            <FavoriteIcon fontSize="small" />
-          ) : (
-            <FavoriteBorderIcon fontSize="small" />
-          )
+    <ECCardIconButton
+      ariaLabel="add to favorites"
+      icon={
+        isFavorite ? (
+          <FavoriteIcon fontSize="small" />
+        ) : (
+          <FavoriteBorderIcon fontSize="small" />
+        )
+      }
+      onAction={() => {
+        if (isFavorite) {
+          handleRemove("error");
+        } else {
+          handleAdd("success");
         }
-        onAction={handleOpen}
-      />
-      <ECSnackbar
-        openSnackbar={open}
-        severity={isFavorite ? "success" : "error"}
-        message={
-          isFavorite
-            ? `${title} ${t("addedToFavorites")}`
-            : `${title} ${t("removeFromFavorites")}`
-        }
-        onClose={handleClose}
-      />
-    </Fragment>
+      }}
+    />
   );
 };
