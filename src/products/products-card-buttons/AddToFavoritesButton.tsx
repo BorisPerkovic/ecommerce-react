@@ -9,7 +9,8 @@ import {
   removeFromFavorites,
 } from "../../favorites/favoritesSlice";
 import { useTranslation } from "react-i18next";
-import { VariantType, useSnackbar } from "notistack";
+import { VariantType, useSnackbar, SnackbarKey } from "notistack";
+import { Button } from "@mui/material";
 
 interface AddToFavoritesButtonProps {
   id: number;
@@ -22,7 +23,7 @@ interface AddToFavoritesButtonProps {
 export const AddToFavoritesButton: FunctionComponent<
   AddToFavoritesButtonProps
 > = ({ id, title, price, rating, image }) => {
-  const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const favorites = useSelector(
     (state: RootState) => state.favorites.favoritesItems
   );
@@ -31,9 +32,18 @@ export const AddToFavoritesButton: FunctionComponent<
   const dispatch = useDispatch();
   const { t } = useTranslation("products");
 
+  const snackbarAction = (id: SnackbarKey) => (
+    <Button color="inherit" size="small" onClick={() => closeSnackbar(id)}>
+      Ok
+    </Button>
+  );
+
   const handleRemove = (variant: VariantType) => {
     dispatch(removeFromFavorites(id));
-    enqueueSnackbar(`${title} ${t("removeFromFavorites")}`, { variant });
+    enqueueSnackbar(`${title} ${t("removeFromFavorites")}`, {
+      variant,
+      action: (id) => snackbarAction(id),
+    });
   };
 
   const handleAdd = (variant: VariantType) => {
@@ -46,7 +56,10 @@ export const AddToFavoritesButton: FunctionComponent<
         productsPrice: price,
       })
     );
-    enqueueSnackbar(`${title} ${t("addedToFavorites")}`, { variant });
+    enqueueSnackbar(`${title} ${t("addedToFavorites")}`, {
+      variant,
+      action: (id) => snackbarAction(id),
+    });
   };
 
   return (
