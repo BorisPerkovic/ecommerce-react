@@ -8,5 +8,7 @@
   "addedToFavorites": "prodotto aggiunto ai preferiti",
   "removeFromFavorites": "prodotto rimosso dai preferiti",
   "addToCart": "Aggiungi Al Carrello",
-  "wentWrong": "Qualcosa è andato storto. Per favore riprova più tardi"
+  "wentWrong": "Qualcosa è andato storto. Per favore riprova più tardi",
+  "addedToCart": "prodotto aggiunto al carrello",
+  "increaseQuantity": "aumento della quantità di prodotto"
 }

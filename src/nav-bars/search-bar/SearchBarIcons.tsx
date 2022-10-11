@@ -10,6 +10,8 @@ export const SearchBarIcons = () => {
   const favorites = useSelector(
     (state: RootState) => state.favorites.favoritesItems
   );
+  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+
   return (
     <Box display={"flex"} justifyContent={"flex-end"} alignItems={"end"}>
       <ECIconButton ariaLabel="user" onAction={() => console.log("clicked")}>
@@ -17,7 +19,7 @@ export const SearchBarIcons = () => {
       </ECIconButton>
       <ECIconButton
         ariaLabel="shopping-cart"
-        badge={3}
+        badge={cartItems.length || "0"}
         onAction={() => console.log("clicked")}
       >
         <ShoppingBagOutlinedIcon />

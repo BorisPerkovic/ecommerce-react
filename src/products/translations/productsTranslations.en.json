@@ -8,5 +8,7 @@
   "addedToFavorites": "product added to favorites",
   "removeFromFavorites": "product removed from favorites",
   "addToCart": "Add To Cart",
-  "wentWrong": "Something went wrong. Please, try again later"
+  "wentWrong": "Something went wrong. Please, try again later",
+  "addedToCart": "product added to cart",
+  "increaseQuantity": "increased product quantity"
 }

@@ -4,6 +4,7 @@ import { ECCardIconButton } from "../../components/ECCardIconButton";
 import { ECProductsDialog } from "../../components/ECProductsDialog";
 
 interface ViewMoreModalProps {
+  id: number;
   title: string;
   price: number;
   rating: number;
@@ -12,6 +13,7 @@ interface ViewMoreModalProps {
 }
 
 export const ViewMoreModal: FunctionComponent<ViewMoreModalProps> = ({
+  id,
   title,
   price,
   rating,
@@ -34,6 +36,7 @@ export const ViewMoreModal: FunctionComponent<ViewMoreModalProps> = ({
         onAction={handleOpen}
       />
       <ECProductsDialog
+        id={id}
         title={title}
         price={price}
         rating={rating}

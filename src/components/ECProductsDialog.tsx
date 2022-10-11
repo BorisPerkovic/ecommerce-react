@@ -9,6 +9,7 @@ import { useAppTheme } from "../theme/useAppTheme";
 import { AddToCartButton } from "../products/products-card-buttons/AddToCartButton";
 
 interface ECProductDialogProps {
+  id: number;
   title: string;
   price: number;
   rating: number;
@@ -19,6 +20,7 @@ interface ECProductDialogProps {
 }
 
 export const ECProductsDialog: FunctionComponent<ECProductDialogProps> = ({
+  id,
   title,
   price,
   rating,
@@ -88,7 +90,12 @@ export const ECProductsDialog: FunctionComponent<ECProductDialogProps> = ({
               </ECText>
             </Box>
             <DialogActions sx={{ width: 250, padding: 0 }}>
-              <AddToCartButton />
+              <AddToCartButton
+                id={id}
+                title={title}
+                price={price}
+                image={image}
+              />
             </DialogActions>
           </Box>
         </Box>

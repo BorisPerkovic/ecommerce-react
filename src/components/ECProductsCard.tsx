@@ -56,6 +56,7 @@ export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
         ) : null}
         {viewMoreIcon ? (
           <ViewMoreModal
+            id={id}
             title={title}
             price={price}
             rating={rating}
@@ -87,7 +88,7 @@ export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
             ${price}
           </ECText>
         </Box>
-        <AddToCartButton />
+        <AddToCartButton id={id} title={title} price={0} image={image} />
       </CardContent>
     </Card>
   );

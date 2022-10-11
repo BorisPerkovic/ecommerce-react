@@ -8,5 +8,7 @@
   "addedToFavorites": "Produkt zu Favoriten hinzugefügt",
   "removeFromFavorites": "Produkt aus Favoriten entfernt",
   "addToCart": "Warenkorb legen",
-  "wentWrong": "Etwas ist schief gelaufen. Bitte versuchen Sie es später erneut"
+  "wentWrong": "Etwas ist schief gelaufen. Bitte versuchen Sie es später erneut",
+  "addedToCart": "Produkt in den Warenkorb gelegt",
+  "increaseQuantity": "erhöhte Produktmenge"
 }

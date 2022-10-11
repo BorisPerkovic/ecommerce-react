@@ -12,6 +12,7 @@ import languageReducer from "./nav-bars/top-nav-bar/menus/changeLanguageSlice";
 import searchProductsReducer from "./nav-bars/search-bar/searchSlice";
 import productsReducer from "./products/productsSlice";
 import favoritesReducer from "./favorites/favoritesSlice";
+import cartReducer from "./cart/cartSlice";
 
 const rootReducer = combineReducers({
   theme: themeReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   search: searchProductsReducer,
   products: productsReducer,
   favorites: favoritesReducer,
+  cart: cartReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -27,7 +29,7 @@ export type AppThunkDispatch = ThunkDispatch<RootState, any, AnyAction>;
 const persistConfig = {
   key: "root",
   storage: localStorage,
-  whitelist: ["theme", "language", "favorites"],
+  whitelist: ["theme", "language", "favorites", "cart"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

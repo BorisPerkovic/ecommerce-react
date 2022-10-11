@@ -14,3 +14,11 @@ export interface ProductsModel {
   productsPrice: number;
   productsImage: string;
 }
+
+export interface CartModel {
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+  cartQuantity: number;
+}
