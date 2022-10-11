@@ -4,10 +4,13 @@ import { ECIconButton } from "../../../components/ECIconButton";
 import { RootState } from "../../../store";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { ECDrawer } from "../../../components/ECDrawer";
+import { CartDrawerItems } from "../../../cart/cart-drawer-content/CartDrawerItems";
+import { useTranslation } from "react-i18next";
 
 export const CartIcon = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+  const { t } = useTranslation("products");
 
   const handleDrawerOpen = () => {
     setIsDrawerOpen(true);
@@ -25,8 +28,12 @@ export const CartIcon = () => {
       >
         <ShoppingBagOutlinedIcon />
       </ECIconButton>
-      <ECDrawer open={isDrawerOpen} title="My Cart" onClose={handleDrawerClose}>
-        dsadsadasdasd
+      <ECDrawer
+        open={isDrawerOpen}
+        title={t("myCart")}
+        onClose={handleDrawerClose}
+      >
+        <CartDrawerItems products={cartItems} />
       </ECDrawer>
     </Fragment>
   );

@@ -9,6 +9,11 @@
   "removeFromFavorites": "product removed from favorites",
   "addToCart": "Add To Cart",
   "wentWrong": "Something went wrong. Please, try again later",
+  "myCart": "My Cart",
+  "total": "Total",
+  "checkout": "Checkout",
   "addedToCart": "product added to cart",
-  "increaseQuantity": "increased product quantity"
+  "increaseQuantity": "increased product quantity",
+  "noCartItems": "You have no items in cart.",
+  "clearCart": "Clear Cart"
 }

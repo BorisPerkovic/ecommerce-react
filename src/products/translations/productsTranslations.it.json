@@ -10,5 +10,10 @@
   "addToCart": "Aggiungi Al Carrello",
   "wentWrong": "Qualcosa è andato storto. Per favore riprova più tardi",
   "addedToCart": "prodotto aggiunto al carrello",
-  "increaseQuantity": "aumento della quantità di prodotto"
+  "myCart": "Mia Carta",
+  "total": "Totale",
+  "checkout": "Guardare",
+  "increaseQuantity": "aumento della quantità di prodotto",
+  "noCartItems": "Non hai articoli nel carrello.",
+  "clearCart": "Cancella il Carrello"
 }

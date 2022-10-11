@@ -1,4 +1,3 @@
-import { styled } from "@mui/material/styles";
 import { Button, ButtonProps } from "@mui/material";
 import { FunctionComponent } from "react";
 import { useAppTheme } from "../theme/useAppTheme";
@@ -39,16 +38,28 @@ export const ECButton: FunctionComponent<ECButtonProps> = ({
         fontFamily: "Montserrat, sans-serif",
         fontSize: fontSize || "16px",
         textTransform: "none",
-        borderRadius: "8px",
+        borderRadius: "6px",
         fontWeight: "400",
         "&.MuiButton-containedPrimary": {
           backgroundColor: palette.primary.main,
           border: `1px solid ${palette.primary.main}`,
           color: palette.background.paper,
+          boxShadow: "none",
         },
         "&.MuiButton-outlinedPrimary": {
           border: `1px solid ${palette.primary.main}`,
           color: palette.primary.main,
+          boxShadow: "none",
+        },
+        "&.MuiButton-containedError": {
+          backgroundColor: palette.error.main,
+          border: `1px solid ${palette.error.main}`,
+          color: palette.common.white,
+          boxShadow: "none",
+        },
+        "&.MuiButton-outlinedError": {
+          border: `1px solid ${palette.error.main}`,
+          color: palette.error.main,
         },
       }}
       variant={variant}

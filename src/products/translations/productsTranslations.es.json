@@ -10,5 +10,10 @@
   "addToCart": "Añadir Al Carrito",
   "wentWrong": "Algo salió mal. Por favor, inténtelo de nuevo más tarde",
   "addedToCart": "producto agregado al carrito",
-  "increaseQuantity": "mayor cantidad de producto"
+  "myCart": "Mi Carrito",
+  "total": "Total",
+  "checkout": "Verificar",
+  "increaseQuantity": "mayor cantidad de producto",
+  "noCartItems": "No tiene artículos en su cesta.",
+  "clearCart": "Vaciar Carrito"
 }

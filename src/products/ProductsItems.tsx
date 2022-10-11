@@ -22,7 +22,7 @@ export const ProductsItems = () => {
   const { t } = useTranslation("products");
 
   useEffect(() => {
-    const timer = setTimeout(() => dispatch(setTimeoutLoading()), 1000);
+    const timer = setTimeout(() => dispatch(setTimeoutLoading()), 600);
     return () => clearTimeout(timer);
   }, [paginationProducts]);
 

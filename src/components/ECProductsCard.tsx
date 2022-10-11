@@ -88,7 +88,7 @@ export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
             ${price}
           </ECText>
         </Box>
-        <AddToCartButton id={id} title={title} price={0} image={image} />
+        <AddToCartButton id={id} title={title} price={price} image={image} />
       </CardContent>
     </Card>
   );

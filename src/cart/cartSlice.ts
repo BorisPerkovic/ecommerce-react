@@ -28,13 +28,13 @@ export const cartSlice = createSlice({
         state.cartItems.push(tempProduct);
       }
     },
-    removeFromCart(state, { payload }) {
+    removeFromCart(state, { payload }: PayloadAction<number>) {
       const nextCartItems = state.cartItems.filter(
         (item) => item.id !== payload
       );
       state.cartItems = nextCartItems;
     },
-    decreaseCart(state, { payload }) {
+    decreaseCart(state, { payload }: PayloadAction<number>) {
       const itemIndex = state.cartItems.findIndex(
         (item) => item.id === payload
       );
@@ -47,7 +47,7 @@ export const cartSlice = createSlice({
         state.cartItems = nextCartItems;
       }
     },
-    increaseCart(state, { payload }) {
+    increaseCart(state, { payload }: PayloadAction<number>) {
       const itemIndex = state.cartItems.findIndex(
         (item) => item.id === payload
       );

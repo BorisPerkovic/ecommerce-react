@@ -1,6 +1,7 @@
-import { Drawer, DrawerProps } from "@mui/material";
+import { Box, Drawer, DrawerProps } from "@mui/material";
 import { FunctionComponent } from "react";
 import { useAppTheme } from "../theme/useAppTheme";
+import { ECDivider } from "./ECDivider";
 import { ECText } from "./ECText";
 
 interface ECDrawerProps extends DrawerProps {
@@ -29,9 +30,12 @@ export const ECDrawer: FunctionComponent<ECDrawerProps> = ({
         },
       }}
     >
-      <ECText fontSize={16} component="h4">
-        {title}
-      </ECText>
+      <Box marginBottom={2}>
+        <ECText fontSize={18} component="h4" textAlign="center">
+          {title}
+        </ECText>
+      </Box>
+      <ECDivider />
       {children}
     </Drawer>
   );
