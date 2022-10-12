@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import HeartBrokenIcon from "@mui/icons-material/HeartBroken";
 import { useAppTheme } from "../../theme/useAppTheme";
 import { ECText } from "../../components/ECText";
 import { useTranslation } from "react-i18next";
@@ -16,14 +16,14 @@ export const FavoritesDrawerNoItems = () => {
       height={"100%"}
       width={"300px"}
     >
-      <ShoppingBagIcon
+      <HeartBrokenIcon
         sx={{
           fontSize: "100px",
           color: palette.error.main,
         }}
       />
       <ECText fontSize={18} component={"p"} textAlign="center">
-        {t("noCartItems")}
+        {t("noFavoritesItems")}
       </ECText>
     </Box>
   );
