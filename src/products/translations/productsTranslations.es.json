@@ -15,5 +15,9 @@
   "checkout": "Verificar",
   "increaseQuantity": "mayor cantidad de producto",
   "noCartItems": "No tiene artículos en su cesta.",
-  "clearCart": "Vaciar Carrito"
+  "clearCart": "Vaciar Carrito",
+  "myFavorites": "Mis Favoritos",
+  "clearFavorites": "Borrar Favoritos",
+  "noFavoritesItems": "No tienes artículos favoritos",
+  "myWishlist": "Lista de Deseos"
 }

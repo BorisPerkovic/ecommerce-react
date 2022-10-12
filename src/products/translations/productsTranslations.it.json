@@ -15,5 +15,9 @@
   "checkout": "Guardare",
   "increaseQuantity": "aumento della quantità di prodotto",
   "noCartItems": "Non hai articoli nel carrello.",
-  "clearCart": "Cancella il Carrello"
+  "clearCart": "Cancella il Carrello",
+  "myFavorites": "Miei Preferiti",
+  "clearFavorites": "Cancella Preferiti",
+  "noFavoritesItems": "Non hai elementi preferiti",
+  "myWishlist": "Lista dei Desideri"
 }

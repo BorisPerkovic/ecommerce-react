@@ -22,3 +22,11 @@ export interface CartModel {
   image: string;
   cartQuantity: number;
 }
+
+export interface FavoritesModel {
+  productsId: number;
+  productsTitle: string;
+  productsRating: number;
+  productsPrice: number;
+  productsImage: string;
+}

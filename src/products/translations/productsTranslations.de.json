@@ -15,5 +15,9 @@
   "checkout": "Kasse",
   "increaseQuantity": "erhöhte Produktmenge",
   "noCartItems": "Sie haben keine Artikel im Warenkorb.",
-  "clearCart": "Warenkorb Löschen"
+  "clearCart": "Warenkorb Löschen",
+  "myFavorites": "Meine Favoriten",
+  "clearFavorites": "Favoriten Löschen",
+  "noFavoritesItems": "Sie haben keine Favoriten",
+  "myWishlist": "Meine Wunschliste"
 }

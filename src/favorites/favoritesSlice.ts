@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { ProductsModel } from "../shared/models";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { FavoritesModel } from "../shared/models";
 
 export interface InitialState {
-  favoritesItems: ProductsModel[];
+  favoritesItems: FavoritesModel[];
 }
 
 const initialState: InitialState = {
@@ -13,10 +13,10 @@ export const favortesSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
-    addToFavorites(state, { payload }) {
+    addToFavorites(state, { payload }: PayloadAction<FavoritesModel>) {
       state.favoritesItems.push(payload);
     },
-    removeFromFavorites(state, { payload }) {
+    removeFromFavorites(state, { payload }: PayloadAction<number>) {
       const tempItems = state.favoritesItems.filter(
         (item) => item.productsId !== payload
       );

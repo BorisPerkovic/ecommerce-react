@@ -15,5 +15,9 @@
   "addedToCart": "product added to cart",
   "increaseQuantity": "increased product quantity",
   "noCartItems": "You have no items in cart.",
-  "clearCart": "Clear Cart"
+  "clearCart": "Clear Cart",
+  "clearFavorites": "Clear Favorites",
+  "noFavoritesItems": "You have no favorites items",
+  "myFavorites": "My Favorites",
+  "myWishlist": "My Wishlist"
 }
