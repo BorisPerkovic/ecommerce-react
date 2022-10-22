@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { SearchProductsModel } from "../../shared/models";
 import { SearchProductsModelDto } from "../../shared/modelsDto";
-import { endpoints } from "../../endpoints/endpoints";
+import { endpoints } from "../../shared/endpoints";
 
 export interface InitialState {
   searchProducts: SearchProductsModel[];

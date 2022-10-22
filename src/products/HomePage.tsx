@@ -1,16 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Grid } from "@mui/material";
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { ECAlert } from "../components/ECAlert";
 import { ECProductsCard } from "../components/ECProductsCard";
 import { ECProductsCardSkeleteon } from "../components/ECProductsCardSkeleteon";
 import { ProductsPagination } from "../pagination/ProductsPagination";
 import { RootState } from "../store";
-import { setTimeoutLoading } from "./productsSlice";
 
-export const ProductsItems = () => {
+export const HomePage = () => {
   const productsStatus = useSelector((state: RootState) => state.products);
   const paginationProducts = useSelector(
     (state: RootState) => state.products.paginationProducts
@@ -18,13 +17,7 @@ export const ProductsItems = () => {
   const languageTag = useSelector(
     (state: RootState) => state.language.applanguage
   );
-  const dispatch = useDispatch();
   const { t } = useTranslation("products");
-
-  useEffect(() => {
-    const timer = setTimeout(() => dispatch(setTimeoutLoading()), 600);
-    return () => clearTimeout(timer);
-  }, [paginationProducts]);
 
   return (
     <Fragment>
@@ -72,9 +65,7 @@ export const ProductsItems = () => {
         alignItems={"center"}
         paddingY={4}
       >
-        {productsStatus.loading !== "failed" ? (
-          <ProductsPagination pageCount={productsStatus.products.length} />
-        ) : null}
+        <ProductsPagination pageCount={productsStatus.products.length} />
       </Box>
     </Fragment>
   );

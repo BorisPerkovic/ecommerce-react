@@ -36,7 +36,7 @@ export const FavoritesDrawerImage: FunctionComponent<
         <ECText bold fontSize={14} component={"p"} elipsis>
           {title.slice(0, 15)}...
         </ECText>
-        <ECRating name="read-only" size="small" value={rating} />
+        <ECRating name="read-only" size="small" value={rating} readonly />
         <ECText fontSize={16} component={"p"} textColor={palette.error.main}>
           ${price}
         </ECText>

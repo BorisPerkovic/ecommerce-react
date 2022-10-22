@@ -6,10 +6,18 @@ import { RootState } from "./store";
 import i18n from "i18next";
 import { useSelector } from "react-redux";
 import { ThemeProvider } from "@mui/styles";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { useAppTheme } from "./theme/useAppTheme";
 import { SearchBar } from "./nav-bars/search-bar/SearchBar";
-import { HerroBanner } from "./hero-banner/HerroBanner";
-import { Main } from "./products/Main";
+import { ProductsMainLayout } from "./shared/ProductsMainLayout";
+import { Typography } from "@mui/material";
+import { HomePage } from "./products/HomePage";
+import { ProductsByCategory } from "./products/ProductsByCategory";
 
 const App = () => {
   const theme = useAppTheme();
@@ -22,14 +30,29 @@ const App = () => {
   }, [language]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <SnackbarProvider maxSnack={2} autoHideDuration={3000}>
-        <TopNavBar />
-        <SearchBar />
-        <HerroBanner />
-        <Main />
-      </SnackbarProvider>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <SnackbarProvider maxSnack={2} autoHideDuration={3000}>
+          <TopNavBar />
+          <SearchBar />
+          <Routes>
+            <Route element={<ProductsMainLayout />}>
+              <Route
+                index
+                path="/"
+                element={<Navigate to="/ecommerce-app" replace />}
+              />
+              <Route path="/ecommerce-app" element={<HomePage />} />
+              <Route
+                path="/products-by-category/:categoryName/:categoryBrand"
+                element={<ProductsByCategory />}
+              />
+            </Route>
+            <Route path="*" element={<Typography>Not found</Typography>} />
+          </Routes>
+        </SnackbarProvider>
+      </ThemeProvider>
+    </Router>
   );
 };
 

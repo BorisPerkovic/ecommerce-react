@@ -1,7 +1,10 @@
 import Pagination, { PaginationProps } from "@mui/material/Pagination";
 import { FunctionComponent } from "react";
 import { useDispatch } from "react-redux";
-import { setPaginationProducts } from "../products/productsSlice";
+import {
+  setPaginationProducts,
+  setTimeoutLoading,
+} from "../products/productsSlice";
 import { useAppTheme } from "../theme/useAppTheme";
 
 const pageSize = 12;
@@ -23,6 +26,7 @@ export const ProductsPagination: FunctionComponent<ProductsPaginationProps> = ({
         const from = (page - 1) * pageSize;
         const to = (page - 1) * pageSize + pageSize;
         dispatch(setPaginationProducts({ from: from, to: to }));
+        setTimeout(() => dispatch(setTimeoutLoading()), 600);
       }}
       sx={{
         "& .MuiPaginationItem-circular": {
