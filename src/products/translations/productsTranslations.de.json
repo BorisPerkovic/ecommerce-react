@@ -19,5 +19,9 @@
   "myFavorites": "Meine Favoriten",
   "clearFavorites": "Favoriten Löschen",
   "noFavoritesItems": "Sie haben keine Favoriten",
-  "myWishlist": "Meine Wunschliste"
+  "myWishlist": "Meine Wunschliste",
+  "goHome": "Nach Hause",
+  "goBack": "Geh Zurück",
+  "notFound": "Hoppla! Sieht so aus, als ob Sie versuchen, auf die Seite zuzugreifen, die dies nicht ist gefunden.",
+  "notFound404": "404 Nicht Gefunden"
 }

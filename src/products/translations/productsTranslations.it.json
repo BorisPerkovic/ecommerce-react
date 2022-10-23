@@ -19,5 +19,9 @@
   "myFavorites": "Miei Preferiti",
   "clearFavorites": "Cancella Preferiti",
   "noFavoritesItems": "Non hai elementi preferiti",
-  "myWishlist": "Lista dei Desideri"
+  "myWishlist": "Lista dei Desideri",
+  "goHome": "Andare a Casa",
+  "goBack": "Torna Indietro",
+  "notFound": "Ops! Sembra che tu stia tentando di accedere alla pagina che non è stata trovata.",
+  "notFound404": "404 Non Trovato"
 }

@@ -19,5 +19,9 @@
   "clearFavorites": "Clear Favorites",
   "noFavoritesItems": "You have no favorites items",
   "myFavorites": "My Favorites",
-  "myWishlist": "My Wishlist"
+  "myWishlist": "My Wishlist",
+  "goHome": "Go Home",
+  "goBack": "Go Back",
+  "notFound": "Ooops! Looks like you are trying to access to the page that is not found.",
+  "notFound404": "404 not found"
 }

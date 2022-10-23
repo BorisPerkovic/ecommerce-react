@@ -15,9 +15,9 @@ import {
 import { useAppTheme } from "./theme/useAppTheme";
 import { SearchBar } from "./nav-bars/search-bar/SearchBar";
 import { ProductsMainLayout } from "./shared/ProductsMainLayout";
-import { Typography } from "@mui/material";
 import { HomePage } from "./products/HomePage";
 import { ProductsByCategory } from "./products/ProductsByCategory";
+import { NotFound } from "./shared/NotFound";
 
 const App = () => {
   const theme = useAppTheme();
@@ -48,7 +48,7 @@ const App = () => {
                 element={<ProductsByCategory />}
               />
             </Route>
-            <Route path="*" element={<Typography>Not found</Typography>} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </SnackbarProvider>
       </ThemeProvider>
