@@ -48,6 +48,7 @@ export const SearchBarInput = () => {
         control={control}
         render={({ field: { onChange, value } }) => (
           <ECOutlinedInputField
+            type="search"
             placeholder={t("searchFor")}
             startAdornment={
               searchProducts.loading === "pending" ? (
@@ -60,7 +61,7 @@ export const SearchBarInput = () => {
                 <SearchIcon />
               )
             }
-            value={value}
+            defaultValue={value}
             onChange={(e) => onChange(() => debounced(e))}
           />
         )}

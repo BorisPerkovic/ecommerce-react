@@ -9,6 +9,7 @@ import { useAppTheme } from "../theme/useAppTheme";
 
 interface ECOutlinedInputFieldProps extends OutlinedInputProps {
   placeholder: string;
+  type?: string;
   startAndorment?: React.ReactNode;
   endAndorment?: React.ReactNode;
   onChange: (
@@ -18,12 +19,13 @@ interface ECOutlinedInputFieldProps extends OutlinedInputProps {
 
 export const ECOutlinedInputField: FunctionComponent<
   ECOutlinedInputFieldProps
-> = ({ placeholder, startAdornment, endAdornment, onChange }) => {
+> = ({ placeholder, type, startAdornment, endAdornment, onChange }) => {
   const { palette } = useAppTheme();
-
+  const closeIcon = require("../assets/images/close-icon.png");
   return (
     <FormControl fullWidth>
       <TextField
+        type={type}
         variant="outlined"
         sx={{
           "& .MuiInputBase-root": {
@@ -45,6 +47,17 @@ export const ECOutlinedInputField: FunctionComponent<
               borderWidth: "1px",
               borderColor: palette.secondary.light,
             },
+          },
+          "& input[type='search']::-webkit-search-cancel-button": {
+            WebkitAppearance: "none",
+            height: "14px",
+            width: "14px",
+            background: `url(${closeIcon}) no-repeat 50% 50%`,
+            backgroundSize: "14px 14px",
+            backgroundColor: palette.secondary.main,
+            padding: "4px",
+            borderRadius: 10,
+            cursor: "pointer",
           },
         }}
         placeholder={placeholder}
