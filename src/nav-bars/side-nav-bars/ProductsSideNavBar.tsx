@@ -8,7 +8,7 @@ import { endpoints } from "../../shared/endpoints";
 import { getProducts } from "../../products/productsSlice";
 import { categories } from "../../shared/ProductsCategories";
 import { AppThunkDispatch } from "../../store";
-import { Link } from "react-router-dom";
+import { ECLink } from "../../components/ECLink";
 
 export const ProductsSideNavBar = () => {
   const [expanded, setExpanded] = useState<boolean | string>(false);
@@ -33,7 +33,7 @@ export const ProductsSideNavBar = () => {
 
   return (
     <Fragment>
-      <Link to={"/ecommerce-app"}>
+      <ECLink to={"/home"}>
         <ECAccordion
           id="panel1-home"
           expandIcon={false}
@@ -42,7 +42,7 @@ export const ProductsSideNavBar = () => {
           children={""}
           onChange={() => setUrl(`${endpoints.PRODUCTS}`)}
         />
-      </Link>
+      </ECLink>
       <ECAccordion
         id="panel1-navigation"
         expandIcon
@@ -61,11 +61,11 @@ export const ProductsSideNavBar = () => {
                 )
               }
             >
-              <Link to={`/products-by-category/televisions/${category}`}>
+              <ECLink to={`/products-by-category/televisions/${category}`}>
                 <ECText component={"p"} fontSize={14}>
                   {category}
                 </ECText>
-              </Link>
+              </ECLink>
             </AccordionDetails>
           );
         })}
@@ -88,11 +88,11 @@ export const ProductsSideNavBar = () => {
                 )
               }
             >
-              <Link to={`/products-by-category/telephones/${category}`}>
+              <ECLink to={`/products-by-category/telephones/${category}`}>
                 <ECText component={"p"} fontSize={14}>
                   {category}
                 </ECText>
-              </Link>
+              </ECLink>
             </AccordionDetails>
           );
         })}
@@ -115,11 +115,11 @@ export const ProductsSideNavBar = () => {
                 )
               }
             >
-              <Link to={`/products-by-category/laptops/${category}`}>
+              <ECLink to={`/products-by-category/laptops/${category}`}>
                 <ECText component={"p"} fontSize={14}>
                   {category}
                 </ECText>
-              </Link>
+              </ECLink>
             </AccordionDetails>
           );
         })}
@@ -142,11 +142,11 @@ export const ProductsSideNavBar = () => {
                 )
               }
             >
-              <Link to={`/products-by-category/cameras/${category}`}>
+              <ECLink to={`/products-by-category/cameras/${category}`}>
                 <ECText component={"p"} fontSize={14}>
                   {category}
                 </ECText>
-              </Link>
+              </ECLink>
             </AccordionDetails>
           );
         })}
@@ -169,11 +169,11 @@ export const ProductsSideNavBar = () => {
                 )
               }
             >
-              <Link to={`/products-by-category/audio/${category}`}>
+              <ECLink to={`/products-by-category/audio/${category}`}>
                 <ECText component={"p"} fontSize={14}>
                   {category}
                 </ECText>
-              </Link>
+              </ECLink>
             </AccordionDetails>
           );
         })}

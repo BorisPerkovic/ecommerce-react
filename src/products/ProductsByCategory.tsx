@@ -2,11 +2,9 @@ import { Grid, Box } from "@mui/material";
 import React, { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { ECAlert } from "../components/ECAlert";
 import { ECProductsCard } from "../components/ECProductsCard";
 import { ECProductsCardSkeleteon } from "../components/ECProductsCardSkeleteon";
-import { ECText } from "../components/ECText";
 import { ProductsPagination } from "../pagination/ProductsPagination";
 import { RootState } from "../store";
 

@@ -14,7 +14,7 @@ export const ProductsMainLayout = () => {
   const { palette } = useAppTheme();
 
   const categoryTitle = `${categoryName?.toUpperCase()} - ${categoryBrand?.toUpperCase()}`;
-  const title = categoryName ? categoryTitle : "THE BEST SELLERS";
+  const title = categoryName ? categoryTitle : "BEST SELLERS";
   return (
     <Fragment>
       <HerroBanner />

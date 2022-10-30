@@ -37,12 +37,8 @@ const App = () => {
           <SearchBar />
           <Routes>
             <Route element={<ProductsMainLayout />}>
-              <Route
-                index
-                path="/"
-                element={<Navigate to="/ecommerce-app" replace />}
-              />
-              <Route path="/ecommerce-app" element={<HomePage />} />
+              <Route index path="/" element={<Navigate to="/home" replace />} />
+              <Route path="/home" element={<HomePage />} />
               <Route
                 path="/products-by-category/:categoryName/:categoryBrand"
                 element={<ProductsByCategory />}

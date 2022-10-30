@@ -3,6 +3,7 @@ import { useAppTheme } from "../theme/useAppTheme";
 import { FunctionComponent, SyntheticEvent } from "react";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { ECText } from "./ECText";
+import { useLocation } from "react-router-dom";
 
 interface ECAccordionProps extends AccordionProps {
   expanded?: boolean;
@@ -26,26 +27,31 @@ export const ECAccordion: FunctionComponent<ECAccordionProps> = ({
   id,
 }) => {
   const { palette } = useAppTheme();
+  const { pathname } = useLocation();
+
+  const isSelected = pathname.includes(title.toLocaleLowerCase());
 
   return (
     <Accordion
       expanded={expanded}
       disableGutters
       sx={{
-        padding: "0px 10px",
         backgroundColor: palette.background.paper,
-        color: palette.primary.main,
         boxShadow: palette.grey[400],
+        "& .MuiAccordionSummary-root": {
+          borderRadius: "none",
+          borderLeft: isSelected ? `2px solid ${palette.error.main}` : "",
+        },
         "& .MuiAccordionSummary-content:hover": {
           color: palette.error.main,
-          transition: "all 0.2s",
+          transition: "all 0.1s",
         },
         "& .MuiAccordionDetails-root": {
           padding: "10px 25px",
         },
         "& .MuiTypography-root:hover": {
           color: palette.error.main,
-          transition: "all 0.2s",
+          transition: "all 0.1s",
         },
         "& .MuiSvgIcon-root": {
           color: palette.primary.main,
