@@ -14,10 +14,10 @@ import {
 } from "react-router-dom";
 import { useAppTheme } from "./theme/useAppTheme";
 import { SearchBar } from "./nav-bars/search-bar/SearchBar";
-import { ProductsMainLayout } from "./shared/ProductsMainLayout";
-import { HomePage } from "./products/HomePage";
-import { ProductsByCategory } from "./products/ProductsByCategory";
+import { HomePage } from "./products/home-page/HomePage";
+import { ProductsByCategory } from "./products/products-by-category/ProductsByCategory";
 import { NotFound } from "./shared/NotFound";
+import { Main } from "./products/Main";
 
 const App = () => {
   const theme = useAppTheme();
@@ -36,7 +36,7 @@ const App = () => {
           <TopNavBar />
           <SearchBar />
           <Routes>
-            <Route element={<ProductsMainLayout />}>
+            <Route element={<Main />}>
               <Route index path="/" element={<Navigate to="/home" replace />} />
               <Route path="/home" element={<HomePage />} />
               <Route

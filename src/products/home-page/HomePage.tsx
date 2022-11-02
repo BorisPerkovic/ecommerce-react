@@ -3,11 +3,11 @@ import { Box, Grid } from "@mui/material";
 import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { ECAlert } from "../components/ECAlert";
-import { ECProductsCard } from "../components/ECProductsCard";
-import { ECProductsCardSkeleteon } from "../components/ECProductsCardSkeleteon";
-import { ProductsPagination } from "../pagination/ProductsPagination";
-import { RootState } from "../store";
+import { ECAlert } from "../../components/ECAlert";
+import { ECProductsCard } from "../../components/ECProductsCard";
+import { ECProductsCardSkeleteon } from "../../components/ECProductsCardSkeleteon";
+import { ProductsPagination } from "../../pagination/ProductsPagination";
+import { RootState } from "../../store";
 
 export const HomePage = () => {
   const productsStatus = useSelector((state: RootState) => state.products);
