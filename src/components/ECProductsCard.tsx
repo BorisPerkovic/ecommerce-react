@@ -8,6 +8,7 @@ import { FunctionComponent } from "react";
 import { AddToFavoritesButton } from "../products/products-card-buttons/AddToFavoritesButton";
 import { ViewMoreModal } from "../products/products-card-buttons/ViewMoreModal";
 import { AddToCartButton } from "../products/products-card-buttons/AddToCartButton";
+import { ECLink } from "./ECLink";
 
 interface ECProductsCardProps {
   id: number;
@@ -31,6 +32,7 @@ export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
   description,
 }) => {
   const { palette } = useAppTheme();
+  const urlTitle = title.split(" ").join("-");
   return (
     <Card
       sx={{
@@ -66,21 +68,25 @@ export const ECProductsCard: FunctionComponent<ECProductsCardProps> = ({
         ) : null}
       </Box>
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-        <img
-          src={image}
-          alt={title}
-          style={{
-            maxHeight: 120,
-            alignSelf: "center",
-            margin: "10px 0px",
-          }}
-        />
+        <ECLink to={`/single-product/${urlTitle}/${id}`}>
+          <img
+            src={image}
+            alt={title}
+            style={{
+              maxHeight: 120,
+              alignSelf: "center",
+              margin: "10px 0px",
+            }}
+          />
+        </ECLink>
       </Box>
       <CardContent>
         <Box marginBottom={1}>
-          <ECText component="p" fontSize={14}>
-            {title}
-          </ECText>
+          <ECLink to={`/single-product/${urlTitle}/${id}`}>
+            <ECText component="p" fontSize={14}>
+              {title}
+            </ECText>
+          </ECLink>
         </Box>
         <ECRating name="read-only" value={rating} readonly size="small" />
         <Box marginTop={1} marginBottom={2}>

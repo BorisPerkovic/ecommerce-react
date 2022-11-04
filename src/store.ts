@@ -13,6 +13,7 @@ import searchProductsReducer from "./nav-bars/search-bar/searchSlice";
 import productsReducer from "./products/productsSlice";
 import favoritesReducer from "./favorites/favoritesSlice";
 import cartReducer from "./cart/cartSlice";
+import productReducer from "./products/single-product/singleProductSlice";
 
 const rootReducer = combineReducers({
   theme: themeReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   products: productsReducer,
   favorites: favoritesReducer,
   cart: cartReducer,
+  product: productReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

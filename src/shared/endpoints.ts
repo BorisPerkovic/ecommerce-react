@@ -3,4 +3,5 @@ export const endpoints = {
   SEARCH_PRODUCTS: "/searchProduct.service.php?search=",
   PRODUCTS: "/products.service.php",
   PRODUCTS_BY_CATEGORY: "/productsByCategory.service.php?",
+  SINGLE_PRODUCT: "/singleProduct.service.php?",
 };

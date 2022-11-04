@@ -1,16 +1,12 @@
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Fragment } from "react";
-import { useSelector } from "react-redux";
 import { Outlet, useParams } from "react-router-dom";
 import { ECText } from "../components/ECText";
 import { HerroBanner } from "../hero-banner/HerroBanner";
 import { ProductsSideNavBar } from "../nav-bars/side-nav-bars/ProductsSideNavBar";
-import { ProductsPagination } from "../pagination/ProductsPagination";
 import { MainLayout } from "../shared/MainLayout";
-import { RootState } from "../store";
 
 export const Main = () => {
-  const products = useSelector((state: RootState) => state.products);
   const { categoryName, categoryBrand } = useParams<{
     categoryName: string;
     categoryBrand: string;

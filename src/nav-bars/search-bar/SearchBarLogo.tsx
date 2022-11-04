@@ -1,21 +1,11 @@
 import { Typography } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { getProducts } from "../../products/productsSlice";
 import { useAppTheme } from "../../theme/useAppTheme";
-import { endpoints } from "../../shared/endpoints";
-import { AppThunkDispatch } from "../../store";
 import { ECLink } from "../../components/ECLink";
 
 export const SearchBarLogo = () => {
   const { palette } = useAppTheme();
-  const dispatch = useDispatch<AppThunkDispatch>();
   return (
-    <ECLink
-      to="/home"
-      onAction={() =>
-        dispatch(getProducts(`${endpoints.BASE_URL}${endpoints.PRODUCTS}`))
-      }
-    >
+    <ECLink to="/home">
       <Typography
         component={"h2"}
         variant="h2"

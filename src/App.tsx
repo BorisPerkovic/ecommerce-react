@@ -18,6 +18,7 @@ import { HomePage } from "./products/home-page/HomePage";
 import { ProductsByCategory } from "./products/products-by-category/ProductsByCategory";
 import { NotFound } from "./shared/NotFound";
 import { Main } from "./products/Main";
+import { SingleProduct } from "./products/single-product/SingleProduct";
 
 const App = () => {
   const theme = useAppTheme();
@@ -44,6 +45,10 @@ const App = () => {
                 element={<ProductsByCategory />}
               />
             </Route>
+            <Route
+              path="/single-product/:categoryName/:productId"
+              element={<SingleProduct />}
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </SnackbarProvider>
