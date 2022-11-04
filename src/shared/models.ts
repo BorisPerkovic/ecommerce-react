@@ -15,6 +15,21 @@ export interface ProductsModel {
   productsImage: string;
 }
 
+export interface SingleProductModel {
+  productsId: number;
+  productsTitle: string;
+  productsPrice: number;
+  productsCategory: string;
+  en: string;
+  de: string;
+  it: string;
+  es: string;
+  productsImage: string;
+  productsRate: number;
+  cartQuantity: number;
+  productsBrand: string;
+}
+
 export interface CartModel {
   id: number;
   title: string;

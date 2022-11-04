@@ -2,35 +2,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { endpoints } from "../../shared/endpoints";
 
 import axios from "axios";
-export interface SingleProductDTO {
-  products_id: number;
-  products_title: string;
-  products_price: string;
-  products_category: string;
-  en: string;
-  de: string;
-  it: string;
-  es: string;
-  products_image: string;
-  products_rate: string;
-}
-
-export interface SingleProduct {
-  productsId: number;
-  productsTitle: string;
-  productsPrice: number;
-  productsCategory: string;
-  en: string;
-  de: string;
-  it: string;
-  es: string;
-  productsImage: string;
-  productsRate: number;
-  cartQuantity: number;
-}
+import { SingleProductModel } from "../../shared/models";
+import { SingleProductDTO } from "../../shared/modelsDto";
 
 interface SingleProductsState {
-  product: SingleProduct;
+  product: SingleProductModel;
   loading: "idle" | "pending" | "succeeded" | "failed";
 }
 
@@ -47,6 +23,7 @@ const initialState: SingleProductsState = {
     productsImage: "",
     productsRate: 0,
     cartQuantity: 0,
+    productsBrand: "",
   },
   loading: "idle",
 };
@@ -84,6 +61,7 @@ export const singleProductSlice = createSlice({
           productsImage: action.payload.data.products_image,
           productsRate: +action.payload.data.products_rate,
           cartQuantity: 0,
+          productsBrand: action.payload.data.products_brand,
         };
       })
       .addCase(singleProduct.rejected, (state) => {

@@ -5,7 +5,7 @@ import { useAppTheme } from "../theme/useAppTheme";
 interface ECMenuItemProps extends MenuItemProps {
   itemColor?: string;
   label: string;
-  onAction: () => void;
+  onAction?: () => void;
 }
 
 export const ECMenuItem: FunctionComponent<ECMenuItemProps> = ({

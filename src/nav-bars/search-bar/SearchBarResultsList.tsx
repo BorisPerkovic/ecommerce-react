@@ -1,10 +1,13 @@
 import { Paper } from "@mui/material";
 import { Fragment, FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { ECLink } from "../../components/ECLink";
 import { ECMenuItem } from "../../components/ECMenuItem";
 import { ECText } from "../../components/ECText";
 import { SearchProductsModel } from "../../shared/models";
 import { useAppTheme } from "../../theme/useAppTheme";
+import { resetLoadingToIdle } from "./searchSlice";
 
 interface SearchBarResultsListProps {
   products: SearchProductsModel[];
@@ -15,6 +18,7 @@ export const SearchBarResultsList: FunctionComponent<
 > = ({ products }) => {
   const { palette } = useAppTheme();
   const { t } = useTranslation("navigation");
+  const dispatch = useDispatch();
 
   return (
     <Fragment>
@@ -34,11 +38,15 @@ export const SearchBarResultsList: FunctionComponent<
         {products.length > 0
           ? products.map((product) => {
               return (
-                <ECMenuItem
+                <ECLink
                   key={product.productsId}
-                  label={product.productsTitle}
-                  onAction={() => console.log("item clicked")}
-                />
+                  to={`/single-product/${product.productsTitle}/${product.productsId}`}
+                >
+                  <ECMenuItem
+                    label={product.productsTitle}
+                    onAction={() => dispatch(resetLoadingToIdle())}
+                  />
+                </ECLink>
               );
             })
           : null}
