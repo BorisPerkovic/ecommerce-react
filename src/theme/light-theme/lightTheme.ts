@@ -30,6 +30,7 @@ export const lightTheme: Theme = createTheme({
       main: LightThemePaletteColors.INFO,
     },
     grey: {
+      "100": LightThemePaletteColors.GRAY_100,
       "200": LightThemePaletteColors.GRAY_200,
       "300": LightThemePaletteColors.GRAY_300,
       "400": LightThemePaletteColors.GRAY_400,

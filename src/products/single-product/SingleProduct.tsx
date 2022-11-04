@@ -8,6 +8,7 @@ import { AppThunkDispatch, RootState } from "../../store";
 import { SingleProductImage } from "./SingleProductImage";
 import { SingleProductOverview } from "./SingleProductOverview";
 import { singleProduct } from "./singleProductSlice";
+import { SingleProductTabs } from "./single-product-tabs/SingleProductTabs";
 
 export const SingleProduct = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -47,6 +48,7 @@ export const SingleProduct = () => {
             brand={product.productsBrand}
             image={product.productsImage}
           />
+          <SingleProductTabs />
         </Fragment>
       ) : null}
       {productStatus === "failed" ? (
