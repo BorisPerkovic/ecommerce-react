@@ -17,7 +17,8 @@ export const ReviewProductTab: FunctionComponent<ReviewProductTabProps> = ({
       hidden={value !== index}
       id={`tabpanel-${index}`}
       aria-labelledby={`tab-${index}`}
-      paddingY={2}
+      paddingX={2}
+      paddingY={4}
     >
       <ECText component="p" fontSize={18}>
         review

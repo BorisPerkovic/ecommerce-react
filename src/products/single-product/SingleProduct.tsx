@@ -16,6 +16,9 @@ export const SingleProduct = () => {
   const productStatus = useSelector(
     (state: RootState) => state.product.loading
   );
+  const languageTag = useSelector(
+    (state: RootState) => state.language.applanguage
+  );
 
   const dispatch = useDispatch<AppThunkDispatch>();
 
@@ -48,7 +51,9 @@ export const SingleProduct = () => {
             brand={product.productsBrand}
             image={product.productsImage}
           />
-          <SingleProductTabs />
+          <SingleProductTabs
+            description={product[languageTag as keyof typeof product]}
+          />
         </Fragment>
       ) : null}
       {productStatus === "failed" ? (
