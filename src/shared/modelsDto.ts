@@ -1,9 +1,4 @@
-export interface SearchProductsModelDto {
-  products_id: number;
-  products_title: string;
-}
-
-export interface ProductsModelDto {
+export interface ProductsContentModelDto {
   products_id: number;
   products_title: string;
   de: string;
@@ -15,6 +10,15 @@ export interface ProductsModelDto {
   products_image: string;
 }
 
+export interface ProductsModelDto {
+  total_elements: number;
+  content: ProductsContentModelDto[];
+}
+
+export interface SearchProductsModelDto {
+  products_id: number;
+  products_title: string;
+}
 export interface SingleProductDTO {
   products_id: number;
   products_title: string;
@@ -27,4 +31,17 @@ export interface SingleProductDTO {
   products_image: string;
   products_rate: string;
   products_brand: string;
+}
+
+export interface FeedbackModelDto {
+  feedback_id: number;
+  feedback_user: string;
+  feedback_rating: number;
+  feedback_comment: string;
+  feedback_added: Date;
+}
+
+export interface FeedbacksDto {
+  product: SingleProductDTO;
+  feedbacks: FeedbackModelDto[];
 }

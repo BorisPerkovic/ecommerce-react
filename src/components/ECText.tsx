@@ -12,6 +12,7 @@ export interface ECTextPorps extends TypographyProps {
   children: any;
   space?: string;
   elipsis?: boolean;
+  id?: string;
 }
 
 export const ECText: FunctionComponent<ECTextPorps> = ({
@@ -23,10 +24,12 @@ export const ECText: FunctionComponent<ECTextPorps> = ({
   component,
   space,
   elipsis,
+  id,
 }) => {
   const { palette } = useAppTheme();
   return (
     <Typography
+      id={id}
       sx={{
         fontFamily: "Montserrat, sans-serif",
         fontWeight: bold ? 700 : 400,

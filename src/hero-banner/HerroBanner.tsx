@@ -37,7 +37,12 @@ export const HerroBanner = () => {
             <ECText component="h1" fontSize={48} textAlign="center" bold>
               {t("modernEcommerce")}
             </ECText>
-            <ECText component="p" fontSize={16} textAlign="center">
+            <ECText
+              component="p"
+              fontSize={16}
+              textAlign="center"
+              id="scrollGrid"
+            >
               {t("bannerDecription")}
             </ECText>
           </Grid>

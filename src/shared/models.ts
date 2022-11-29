@@ -2,8 +2,7 @@ export interface SearchProductsModel {
   productsId: number;
   productsTitle: string;
 }
-
-export interface ProductsModel {
+export interface ProductsContentModel {
   productsId: number;
   productsTitle: string;
   de: string;
@@ -13,6 +12,11 @@ export interface ProductsModel {
   productsRating: number;
   productsPrice: number;
   productsImage: string;
+}
+
+export interface ProductsModel {
+  totalElements: number;
+  content: ProductsContentModel[];
 }
 
 export interface SingleProductModel {
@@ -36,6 +40,19 @@ export interface CartModel {
   price: number;
   image: string;
   cartQuantity: number;
+}
+
+export interface FeedbackModel {
+  feedbackId: number;
+  feedbackUser: string;
+  feedbackRating: number;
+  feedbackComment: string;
+  feedbackAdded: Date;
+}
+
+export interface Feedbacks {
+  product: SingleProductModel;
+  feedbacks: FeedbackModel[];
 }
 
 export interface FavoritesModel {

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export const LANGUAGE_FEATURE_KEY = "language";
+
 export type MainLanguage = "en" | "de" | "es" | "it";
 export type LanguageName = "English" | "German" | "Italy" | "Spain";
 
@@ -23,4 +25,4 @@ const languageSlice = createSlice({
 
 export const { changeLanguage } = languageSlice.actions;
 
-export default languageSlice.reducer;
+export const languageReducer = languageSlice.reducer;

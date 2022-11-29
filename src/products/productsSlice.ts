@@ -1,76 +1,48 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import { ProductsModel } from "../shared/models";
-import { ProductsModelDto } from "../shared/modelsDto";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { ProductsBody } from "../pagination/useProductspagination";
+import { endpoints } from "../shared/endpoints";
+import { ProductsModel, Feedbacks } from "../shared/models";
+import { ProductsModelDto, FeedbacksDto } from "../shared/modelsDto";
+import { singleProductNormalizer } from "./single-product/singleProductNormalizer";
 
-interface ProductsState {
-  products: ProductsModel[];
-  loading: "idle" | "pending" | "succeeded" | "failed";
-  paginationProducts: ProductsModel[];
-}
-
-const initialState: ProductsState = {
-  products: [],
-  loading: "idle",
-  paginationProducts: [],
-};
-
-export const getProducts = createAsyncThunk(
-  "products/getProducts",
-  async (url: string) => {
-    const promise = await axios.get<ProductsModelDto[]>(url);
-    return promise;
-  }
-);
-
-export const productsSlice = createSlice({
-  name: "products",
-  initialState: initialState,
-  reducers: {
-    setPaginationProducts(state, { payload }) {
-      if (state.loading !== "failed") {
-        state.loading = "pending";
-        state.paginationProducts = state.products.slice(
-          payload.from,
-          payload.to
-        );
-      }
-    },
-    setTimeoutLoading(state) {
-      if (state.loading !== "failed") {
-        state.loading = "succeeded";
-      }
-    },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(getProducts.pending, (state) => {
-        state.loading = "pending";
-      })
-      .addCase(getProducts.fulfilled, (state, action) => {
-        state.loading = "succeeded";
-        state.products = action.payload.data.map((item) => {
-          return {
-            productsId: +item.products_id,
-            productsPrice: +item.products_price,
-            productsRating: +item.products_rate,
-            productsImage: item.products_image,
-            productsTitle: item.products_title,
-            de: item.de,
-            en: item.en,
-            it: item.it,
-            es: item.es,
-          };
-        });
-        state.paginationProducts = state.products.slice(0, 12);
-      })
-      .addCase(getProducts.rejected, (state) => {
-        state.loading = "failed";
-      });
-  },
+export const productsApi = createApi({
+  reducerPath: "productsApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: endpoints.BASE_URL,
+  }),
+  tagTypes: ["Products"],
+  endpoints: (builder) => ({
+    getProducts: builder.query<ProductsModel[], ProductsBody>({
+      query: (productsParams) => ({
+        url: `${endpoints.PRODUCTS}`,
+        method: "GET",
+        params: productsParams,
+      }),
+      transformResponse: (response: ProductsModelDto): ProductsModel[] => {
+        const totalElements = response.total_elements;
+        const content = response.content.map((res) => ({
+          productsId: +res.products_id,
+          productsTitle: res.products_title,
+          de: res.de,
+          en: res.en,
+          it: res.it,
+          es: res.es,
+          productsRating: +res.products_rate,
+          productsPrice: +res.products_price,
+          productsImage: res.products_image,
+        }));
+        return [{ totalElements, content }];
+      },
+    }),
+    getSingleProduct: builder.query<Feedbacks, number>({
+      query: (productId) => ({
+        url: `${endpoints.SINGLE_PRODUCT}product=${productId}`,
+      }),
+      transformResponse: (response: FeedbacksDto): Feedbacks => {
+        return singleProductNormalizer(response);
+      },
+    }),
+  }),
 });
 
-export const { setPaginationProducts, setTimeoutLoading } =
-  productsSlice.actions;
-
-export default productsSlice.reducer;
+export const { useGetProductsQuery, useGetSingleProductQuery } = productsApi;

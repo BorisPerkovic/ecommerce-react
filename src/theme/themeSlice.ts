@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export const THEME_FEATURE_KEY = "theme";
+
 export type MainTheme = "light" | "dark";
 
 interface ThemeState {
@@ -20,4 +22,4 @@ const themeSlice = createSlice({
 
 export const { changeTheme } = themeSlice.actions;
 
-export default themeSlice.reducer;
+export const themeReducer = themeSlice.reducer;

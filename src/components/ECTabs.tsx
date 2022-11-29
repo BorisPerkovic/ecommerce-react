@@ -34,6 +34,9 @@ export const ECTabs: FunctionComponent<ECTabsProps> = ({
           "& .MuiTabs-indicator": {
             backgroundColor: palette.primary.main,
           },
+          "& .MuiTab-root.Mui-selected": {
+            color: palette.primary.main,
+          },
         }}
       >
         {children}

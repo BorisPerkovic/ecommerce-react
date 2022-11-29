@@ -4,25 +4,31 @@ import {
   configureStore,
   ThunkDispatch,
 } from "@reduxjs/toolkit";
-import thunkMiddleware from "redux-thunk";
 import { persistStore, persistReducer } from "redux-persist";
 import localStorage from "redux-persist/es/storage";
-import themeReducer from "./theme/themeSlice";
-import languageReducer from "./nav-bars/top-nav-bar/menus/changeLanguageSlice";
-import searchProductsReducer from "./nav-bars/search-bar/searchSlice";
-import productsReducer from "./products/productsSlice";
-import favoritesReducer from "./favorites/favoritesSlice";
-import cartReducer from "./cart/cartSlice";
-import productReducer from "./products/single-product/singleProductSlice";
+import { themeReducer, THEME_FEATURE_KEY } from "./theme/themeSlice";
+import {
+  languageReducer,
+  LANGUAGE_FEATURE_KEY,
+} from "./nav-bars/top-nav-bar/menus/changeLanguageSlice";
+import { productsApi } from "./products/productsSlice";
+import {
+  favoritesReducer,
+  FAVORITES_FEATURE_KEY,
+} from "./favorites/favoritesSlice";
+import { cartReducer, CART_FEATURE_KEY } from "./cart/cartSlice";
+import {
+  searchProductsReducer,
+  SEARCH_FEATURE_KEY,
+} from "./nav-bars/search-bar/searchSlice";
 
 const rootReducer = combineReducers({
-  theme: themeReducer,
-  language: languageReducer,
-  search: searchProductsReducer,
-  products: productsReducer,
-  favorites: favoritesReducer,
-  cart: cartReducer,
-  product: productReducer,
+  [THEME_FEATURE_KEY]: themeReducer,
+  [LANGUAGE_FEATURE_KEY]: languageReducer,
+  [FAVORITES_FEATURE_KEY]: favoritesReducer,
+  [CART_FEATURE_KEY]: cartReducer,
+  [productsApi.reducerPath]: productsApi.reducer,
+  [SEARCH_FEATURE_KEY]: searchProductsReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -38,7 +44,12 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: [thunkMiddleware],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["persist/PERSIST"],
+      },
+    }).concat(productsApi.middleware),
   devTools: true,
 });
 

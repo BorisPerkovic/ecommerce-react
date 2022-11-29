@@ -4,6 +4,8 @@ import { SearchProductsModel } from "../../shared/models";
 import { SearchProductsModelDto } from "../../shared/modelsDto";
 import { endpoints } from "../../shared/endpoints";
 
+export const SEARCH_FEATURE_KEY = "search";
+
 export interface InitialState {
   searchProducts: SearchProductsModel[];
   loading: "idle" | "pending" | "succeeded" | "failed";
@@ -54,4 +56,4 @@ export const searchProductsSlice = createSlice({
 
 export const { resetLoadingToIdle } = searchProductsSlice.actions;
 
-export default searchProductsSlice.reducer;
+export const searchProductsReducer = searchProductsSlice.reducer;

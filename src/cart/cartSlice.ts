@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CartModel } from "../shared/models";
 
+export const CART_FEATURE_KEY = "cart";
+
 export interface InitialState {
   cartItems: CartModel[];
   cartTotalQuantity: number;
@@ -90,4 +92,4 @@ export const {
   clearCart,
 } = cartSlice.actions;
 
-export default cartSlice.reducer;
+export const cartReducer = cartSlice.reducer;

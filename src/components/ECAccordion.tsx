@@ -1,6 +1,6 @@
 import { Accordion, AccordionProps, AccordionSummary } from "@mui/material";
 import { useAppTheme } from "../theme/useAppTheme";
-import { FunctionComponent, SyntheticEvent } from "react";
+import React, { FunctionComponent, SyntheticEvent } from "react";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { ECText } from "./ECText";
 import { useLocation } from "react-router-dom";

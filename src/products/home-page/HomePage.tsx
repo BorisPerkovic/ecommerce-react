@@ -1,23 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Grid } from "@mui/material";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { ECAlert } from "../../components/ECAlert";
 import { ECProductsCard } from "../../components/ECProductsCard";
 import { ECProductsCardSkeleteon } from "../../components/ECProductsCardSkeleteon";
 import { ProductsPagination } from "../../pagination/ProductsPagination";
+import { useProductsPagination } from "../../pagination/useProductspagination";
 import { RootState } from "../../store";
 
 export const HomePage = () => {
-  const productsStatus = useSelector((state: RootState) => state.products);
-  const paginationProducts = useSelector(
-    (state: RootState) => state.products.paginationProducts
-  );
+  const [page, setPage] = useState<number>(0);
+  const { products, isLoading, isError, isFetching } = useProductsPagination({
+    brand: undefined,
+    category: undefined,
+    to: page,
+  });
   const languageTag = useSelector(
     (state: RootState) => state.language.applanguage
   );
   const { t } = useTranslation("products");
+
+  const onHandleScroll = () => {
+    const scrollElement = document.getElementById("scrollGrid");
+    if (scrollElement) {
+      scrollElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <Fragment>
@@ -28,22 +38,20 @@ export const HomePage = () => {
         paddingX={2}
         style={{ position: "relative" }}
       >
-        {productsStatus.loading === "pending" ? (
-          <ECProductsCardSkeleteon />
-        ) : null}
-        {productsStatus.loading === "failed" ? (
+        {isLoading || isFetching ? <ECProductsCardSkeleteon /> : null}
+        {isError ? (
           <ECAlert
             variant={"filled"}
             severity={"error"}
             message={t("wentWrong")}
           />
         ) : null}
-        {productsStatus.loading === "succeeded"
-          ? paginationProducts.map((product, index) => {
+        {!isFetching && products
+          ? products[0].content.map((product) => {
               const translatedDescription =
                 product[languageTag as keyof typeof product];
               return (
-                <Grid key={index + product.productsTitle} item xs={3}>
+                <Grid key={product.productsId} item xs={3}>
                   <ECProductsCard
                     id={product.productsId}
                     title={product.productsTitle}
@@ -65,7 +73,11 @@ export const HomePage = () => {
         alignItems={"center"}
         paddingY={4}
       >
-        <ProductsPagination pageCount={productsStatus.products.length} />
+        <ProductsPagination
+          pageCount={products ? products[0].totalElements : 0}
+          onAction={setPage}
+          onHandleScroll={onHandleScroll}
+        />
       </Box>
     </Fragment>
   );

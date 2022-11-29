@@ -1,62 +1,54 @@
-import React, { Fragment, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Fragment } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ECAlert } from "../../components/ECAlert";
 import { BackdropSpinner } from "../../shared/BackdropSpinner";
 import { MainLayout } from "../../shared/MainLayout";
-import { AppThunkDispatch, RootState } from "../../store";
+import { RootState } from "../../store";
 import { SingleProductImage } from "./SingleProductImage";
 import { SingleProductOverview } from "./SingleProductOverview";
-import { singleProduct } from "./singleProductSlice";
 import { SingleProductTabs } from "./single-product-tabs/SingleProductTabs";
+import { useGetSingleProductQuery } from "../productsSlice";
 
 export const SingleProduct = () => {
   const { productId } = useParams<{ productId: string }>();
-  const product = useSelector((state: RootState) => state.product.product);
-  const productStatus = useSelector(
-    (state: RootState) => state.product.loading
-  );
+
+  const {
+    data: product,
+    isError,
+    isFetching,
+    isSuccess,
+  } = useGetSingleProductQuery(productId ? +productId : 1);
+
   const languageTag = useSelector(
     (state: RootState) => state.language.applanguage
-  );
-
-  const dispatch = useDispatch<AppThunkDispatch>();
-
-  useEffect(() => {
-    let mounted = true;
-
-    if (mounted) {
-      dispatch(singleProduct(productId ?? ""));
-    }
-
-    return () => {
-      mounted = false;
-    };
-  }, [dispatch, productId]);
+  ) as string;
 
   return (
     <MainLayout>
-      {productStatus === "pending" ? <BackdropSpinner /> : null}
-      {productStatus === "succeeded" ? (
+      {isFetching ? <BackdropSpinner /> : null}
+      {isSuccess ? (
         <Fragment>
           <SingleProductImage
-            imageAlt={product.productsTitle}
-            imageSource={product.productsImage}
+            imageAlt={product.product.productsTitle}
+            imageSource={product.product.productsImage}
           />
           <SingleProductOverview
-            id={product.productsId}
-            title={product.productsTitle}
-            price={product.productsPrice}
-            rate={+product.productsRate}
-            brand={product.productsBrand}
-            image={product.productsImage}
+            id={product.product.productsId}
+            title={product.product.productsTitle}
+            price={product.product.productsPrice}
+            rate={+product.product.productsRate}
+            brand={product.product.productsBrand}
+            image={product.product.productsImage}
           />
           <SingleProductTabs
-            description={product[languageTag as keyof typeof product]}
+            description={
+              product.product[languageTag as keyof typeof product.product]
+            }
           />
         </Fragment>
       ) : null}
-      {productStatus === "failed" ? (
+      {isError ? (
         <ECAlert
           variant={"filled"}
           severity={"error"}
