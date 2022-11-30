@@ -3,11 +3,11 @@ import React, { FunctionComponent } from "react";
 import { useAppTheme } from "../theme/useAppTheme";
 
 interface ECRatingProps extends RatingProps {
-  value?: number;
+  value?: number | null;
   readonly?: boolean;
   name: "read-only" | "simple-controlled" | "no-value";
   size: "small" | "medium" | "large";
-  onAction?: () => void;
+  onAction?: (value: number | null) => void;
 }
 
 export const ECRating: FunctionComponent<ECRatingProps> = ({
@@ -22,7 +22,9 @@ export const ECRating: FunctionComponent<ECRatingProps> = ({
     <Rating
       name={name}
       value={value}
-      onChange={onAction}
+      onChange={(event, value) => {
+        onAction && onAction(value);
+      }}
       readOnly={readonly}
       size={size}
       sx={{

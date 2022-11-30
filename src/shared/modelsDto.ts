@@ -31,6 +31,9 @@ export interface SingleProductDTO {
   products_image: string;
   products_rate: string;
   products_brand: string;
+  products_ram: string;
+  products_internal: string;
+  products_system: string;
 }
 
 export interface FeedbackModelDto {

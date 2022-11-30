@@ -32,6 +32,9 @@ export interface SingleProductModel {
   productsRate: number;
   cartQuantity: number;
   productsBrand: string;
+  productsRam: string;
+  productsInternal: string;
+  productsSystem: string;
 }
 
 export interface CartModel {

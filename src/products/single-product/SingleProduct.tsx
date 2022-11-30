@@ -45,6 +45,10 @@ export const SingleProduct = () => {
             description={
               product.product[languageTag as keyof typeof product.product]
             }
+            ram={product.product.productsRam}
+            system={product.product.productsSystem}
+            internal={product.product.productsInternal}
+            reviews={product.feedbacks}
           />
         </Fragment>
       ) : null}

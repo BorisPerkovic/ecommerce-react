@@ -51,6 +51,12 @@ export const ECButton: FunctionComponent<ECButtonProps> = ({
           color: palette.primary.main,
           boxShadow: "none",
         },
+        "&.MuiButton-containedSuccess": {
+          backgroundColor: palette.success.main,
+          border: `1px solid ${palette.success.main}`,
+          color: palette.common.white,
+          boxShadow: "none",
+        },
         "&.MuiButton-containedError": {
           backgroundColor: palette.error.main,
           border: `1px solid ${palette.error.main}`,
